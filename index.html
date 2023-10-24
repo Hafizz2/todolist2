@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todolist</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/list.png" />
+  </head>
+  <body>
+    <header>
+      <h1>Biruk & Hafiz's Todo list app</h1>
+      <h2>2nd Project</h2>
+
+      <div class="todobox">
+        <input id="addlist" type="text" placeholder="Add Your List Here" />
+        <button onclick="addtolist()" id="addbtn">+</button>
+        <div id="listbtn">
+          <button>All lists</button>
+          <button>Pending</button>
+          <button>Completed</button>
+        </div>
+        <ul id="lists"></ul>
+      </div>
+    </header>
+    <script src="script.js"></script>
+  </body>
+</html>

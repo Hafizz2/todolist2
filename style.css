@@ -1,0 +1,88 @@
+body {
+  background-color: #f5f7f8;
+}
+header {
+  background-color: #f4ce14;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  height: 120px;
+  z-index: 1;
+}
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+h2 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  color: #f5f7f8;
+}
+.todobox {
+  background-color: #f4ce14;
+  width: 400px;
+  height: 400px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(6, 22, 82, 0.6);
+}
+#addlist {
+  text-align: center;
+  height: 40px;
+  width: 350px;
+  /* cursor: pointer; */
+  font-size: 20px;
+  border: solid #495e57;
+  border-radius: 10px;
+}
+#addbtn {
+  border-radius: 5px;
+  padding: 13px 13px;
+  background-color: black;
+  color: #f5f7f8;
+}
+#addbtn:hover {
+  background-color: #495e57;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#listbtn {
+  margin-left: auto;
+  margin-right: auto;
+}
+#listbtn button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: black;
+  color: white;
+  width: 100px;
+}
+#listbtn button:hover {
+  background-color: #495e57;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#listbtn button:focus,
+#listbtn button:active {
+  background-color: #495e57;
+}
+.lists-item {
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 5px;
+  list-style-type: none;
+}
+
+.lists-item.checked {
+  background-color: #495e57;
+  text-decoration: line-through;
+}
