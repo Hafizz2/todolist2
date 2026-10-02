@@ -1,0 +1,4357 @@
+{
+ "source": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md",
+ "phases": {
+  "p0": "Phase 0 - Introduction & Exploration",
+  "p1": "Phase 1 - Computer & Networking Foundations",
+  "p2": "Phase 2 - Operating System Fundamentals",
+  "p3": "Phase 3 - Web & Programming Fundamentals",
+  "p4": "Phase 4 - Cybersecurity Fundamentals",
+  "p5": "Phase 5 - Hands-On Learning",
+  "p6": "Phase 6/7 - CTFs & CTF Progression",
+  "p8": "Phase 8/9 - Write-ups, Community & Competitions",
+  "p10": "Phase 10 - Projects & Portfolio",
+  "p11": "Phase 11 - Certifications",
+  "p12": "Phase 12 - Specialization Sampler",
+  "p13": "Phase 13 - Career Development"
+ },
+ "days": [
+  {
+   "phase": "p0",
+   "title": "What is cybersecurity? + set up your learning system",
+   "tasks": [
+    "Read 'Phase 0 - What is Cybersecurity?' in the roadmap",
+    "Create free accounts: TryHackMe, picoCTF, PortSwigger Academy",
+    "Create a GitHub repo called `cybersec-notes` - every day's notes go here",
+    "Pick a notes app (Obsidian or plain Markdown in that repo)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "TryHackMe",
+     "url": "https://tryhackme.com"
+    },
+    {
+     "name": "picoCTF",
+     "url": "https://picoctf.org"
+    },
+    {
+     "name": "PortSwigger Academy",
+     "url": "https://portswigger.net/web-security"
+    },
+    {
+     "name": "Krebs on Security",
+     "url": "https://krebsonsecurity.com"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "Obsidian / Markdown"
+   ],
+   "challenge": "In 5 lines, write what cybersecurity protects and why. Include one real breach you read about on Krebs on Security.",
+   "day": 1,
+   "phase_name": "Phase 0 - Introduction & Exploration",
+   "review": false
+  },
+  {
+   "phase": "p0",
+   "title": "Ethics, law & responsible disclosure",
+   "tasks": [
+    "Read 'Ethical & Legal Boundaries' in the roadmap - twice",
+    "Read the OWASP Vulnerability Disclosure cheat sheet",
+    "Look up your country's computer-misuse law (e.g. IT Act 2000 s.43/66 in India, CFAA in the US)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "OWASP Vulnerability Disclosure Cheat Sheet",
+     "url": "https://cheatsheetseries.owasp.org/cheatsheets/Vulnerability_Disclosure_Cheat_Sheet.html"
+    }
+   ],
+   "tools": [],
+   "challenge": "Write your personal 'rules of engagement' (3 rules) and commit them as the first file in cybersec-notes.",
+   "day": 2,
+   "phase_name": "Phase 0 - Introduction & Exploration",
+   "review": false
+  },
+  {
+   "phase": "p0",
+   "title": "Explore the domains (don't choose yet!)",
+   "tasks": [
+    "Study the domain mindmap in the roadmap (Offensive, AppSec, Defensive, Investigative, ...)",
+    "Watch one NetworkChuck video about cybersecurity careers",
+    "Search LinkedIn for one job post each in 3 domains that sound interesting"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "NetworkChuck (YouTube)",
+     "url": "https://www.youtube.com/@NetworkChuck"
+    },
+    {
+     "name": "Google Cybersecurity Certificate (audit free)",
+     "url": "https://www.coursera.org/professional-certificates/google-cybersecurity"
+    }
+   ],
+   "tools": [],
+   "challenge": "For 3 domains, write one line each: 'A normal day in this job looks like ...'",
+   "day": 3,
+   "phase_name": "Phase 0 - Introduction & Exploration",
+   "review": false
+  },
+  {
+   "phase": "p0",
+   "title": "Build a news habit + NIST Cybersecurity Framework",
+   "tasks": [
+    "Read 3 articles on The Hacker News",
+    "Skim the NIST CSF 2.0 functions: Govern, Identify, Protect, Detect, Respond, Recover",
+    "Subscribe/bookmark: The Hacker News, Krebs on Security"
+   ],
+   "links": [
+    {
+     "name": "The Hacker News",
+     "url": "https://thehackernews.com"
+    },
+    {
+     "name": "NIST CSF",
+     "url": "https://www.nist.gov/cyberframework"
+    },
+    {
+     "name": "Krebs on Security",
+     "url": "https://krebsonsecurity.com"
+    }
+   ],
+   "tools": [],
+   "challenge": "Pick one incident from today's news and map what went wrong to the CSF functions.",
+   "day": 4,
+   "phase_name": "Phase 0 - Introduction & Exploration",
+   "review": false
+  },
+  {
+   "phase": "p0",
+   "title": "Build your home lab: VirtualBox + Ubuntu VM",
+   "tasks": [
+    "Install VirtualBox (or VMware Workstation Player)",
+    "Download Ubuntu Desktop LTS and install it as a VM (2 CPU, 4 GB RAM, 30 GB disk)",
+    "Install guest additions, update with `sudo apt update && sudo apt upgrade`",
+    "Do NOT install Kali yet - the roadmap explains why"
+   ],
+   "links": [
+    {
+     "name": "VirtualBox",
+     "url": "https://www.virtualbox.org"
+    },
+    {
+     "name": "Ubuntu Desktop",
+     "url": "https://ubuntu.com/download/desktop"
+    }
+   ],
+   "tools": [
+    "VirtualBox",
+    "Ubuntu"
+   ],
+   "challenge": "Take a VM snapshot named `clean-install`. Screenshot it into your notes.",
+   "day": 5,
+   "phase_name": "Phase 0 - Introduction & Exploration",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "How a computer runs a program (CPU, RAM, storage)",
+   "tasks": [
+    "Watch CS50x Lecture 0 (first hour is enough)",
+    "Learn: CPU, RAM vs storage, fetch-decode-execute cycle"
+   ],
+   "links": [
+    {
+     "name": "CS50x (Harvard)",
+     "url": "https://cs50.harvard.edu/x/"
+    },
+    {
+     "name": "Nand2Tetris (optional deep dive)",
+     "url": "https://www.nand2tetris.org"
+    }
+   ],
+   "tools": [
+    "Ubuntu VM: `lscpu`, `free -h`, `lsblk`"
+   ],
+   "challenge": "In your VM, find: number of CPU cores, total RAM and disk size. Explain fetch-decode-execute in 3 sentences.",
+   "day": 6,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "Week 1 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: What is cybersecurity? + set up your learning system; Ethics, law & responsible disclosure; Explore the domains (don't choose yet!); Build a news habit + NIST Cybersecurity Framework; Build your home lab: VirtualBox + Ubuntu VM; How a computer runs a program (CPU, RAM, storage)",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'What is cybersecurity? + set up your learning system' out loud in 2 minutes as if to a friend.",
+   "day": 7,
+   "phase_name": "Phase 1 - Computer & Networking Foundations"
+  },
+  {
+   "phase": "p1",
+   "title": "Processes, memory & filesystems - what an OS does",
+   "tasks": [
+    "Do the TryHackMe room 'Operating Systems Introduction'",
+    "Learn: process vs program, PID, virtual memory, filesystem"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Operating Systems Introduction",
+     "url": "https://tryhackme.com/room/operatingsystemsintroduction"
+    }
+   ],
+   "tools": [
+    "`ps aux`, `top`, `df -h`"
+   ],
+   "challenge": "Using `top`, find the process using the most memory in your VM. What is its PID and owner?",
+   "day": 8,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "Binary, hex & how data is represented",
+   "tasks": [
+    "Learn binary and hexadecimal counting (CS50 week 0 notes)",
+    "Learn ASCII - every character is a number",
+    "Play with CyberChef 'To Binary', 'To Hex', 'From Hex'"
+   ],
+   "links": [
+    {
+     "name": "CS50x (Harvard)",
+     "url": "https://cs50.harvard.edu/x/"
+    },
+    {
+     "name": "CyberChef",
+     "url": "https://gchq.github.io/CyberChef/"
+    }
+   ],
+   "tools": [
+    "CyberChef"
+   ],
+   "challenge": "By hand: convert 192 to binary and hex, and 0x41 to its ASCII letter. Verify in CyberChef.",
+   "day": 9,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "What is a network? LAN vs WAN",
+   "tasks": [
+    "TryHackMe: 'What Is Networking?'",
+    "Professor Messer Network+: watch the networking intro videos"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: What Is Networking?",
+     "url": "https://tryhackme.com/room/whatisnetworking"
+    },
+    {
+     "name": "Professor Messer Network+ (N10-009)",
+     "url": "https://www.professormesser.com/network-plus/n10-009/n10-009-training-course/"
+    }
+   ],
+   "tools": [],
+   "challenge": "Draw your home network (router, phone, laptop, ISP) and add the diagram to your notes.",
+   "day": 10,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "IP addressing - public vs private",
+   "tasks": [
+    "TryHackMe: 'Intro to Networking'",
+    "Learn the private ranges: 10/8, 172.16/12, 192.168/16"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Intro to Networking",
+     "url": "https://tryhackme.com/room/introtonetworking"
+    }
+   ],
+   "tools": [
+    "`ip a`",
+    "`curl ifconfig.me`"
+   ],
+   "challenge": "Find your private IP and your public IP. Explain in your notes why they are different.",
+   "day": 11,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "Subnetting & CIDR",
+   "tasks": [
+    "Learn CIDR notation, network/broadcast address, usable hosts",
+    "Do 10 practice questions on subnettingpractice.com"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Network+ (N10-009)",
+     "url": "https://www.professormesser.com/network-plus/n10-009/n10-009-training-course/"
+    },
+    {
+     "name": "Subnetting Practice",
+     "url": "https://subnettingpractice.com"
+    }
+   ],
+   "tools": [],
+   "challenge": "For 192.168.10.0/26: network address, broadcast address, usable host count? (Check with /challenge too.)",
+   "day": 12,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "MAC addresses, Ethernet & ARP",
+   "tasks": [
+    "TryHackMe: 'Layer 2'",
+    "Learn how ARP maps IP -> MAC and why ARP spoofing works"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Layer 2",
+     "url": "https://tryhackme.com/room/layer2"
+    },
+    {
+     "name": "Wireshark OUI lookup",
+     "url": "https://www.wireshark.org/tools/oui-lookup.html"
+    }
+   ],
+   "tools": [
+    "`ip neigh`"
+   ],
+   "challenge": "Read your ARP table and look up the vendor of your router's MAC address.",
+   "day": 13,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "Week 2 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Processes, memory & filesystems - what an OS does; Binary, hex & how data is represented; What is a network? LAN vs WAN; IP addressing - public vs private; Subnetting & CIDR; MAC addresses, Ethernet & ARP",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Processes, memory & filesystems - what an OS does' out loud in 2 minutes as if to a friend.",
+   "day": 14,
+   "phase_name": "Phase 1 - Computer & Networking Foundations"
+  },
+  {
+   "phase": "p1",
+   "title": "Ports, protocols, TCP vs UDP",
+   "tasks": [
+    "TryHackMe: 'Networking Concepts'",
+    "Learn TCP (reliable, connection) vs UDP (fast, connectionless)"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Networking Concepts",
+     "url": "https://tryhackme.com/room/networkingconcepts"
+    }
+   ],
+   "tools": [
+    "`ss -tulpn`"
+   ],
+   "challenge": "From memory, list 15 well-known ports and their services (21, 22, 25, 53, 80, 443, 445, 3389 ...).",
+   "day": 15,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "TCP handshake + your first Wireshark capture",
+   "tasks": [
+    "Install Wireshark",
+    "TryHackMe: 'Network Traffic Basics'",
+    "Capture traffic while you open a website"
+   ],
+   "links": [
+    {
+     "name": "Wireshark download",
+     "url": "https://www.wireshark.org/download.html"
+    },
+    {
+     "name": "TryHackMe: Network Traffic Basics",
+     "url": "https://tryhackme.com/room/networktrafficbasics"
+    }
+   ],
+   "tools": [
+    "Wireshark"
+   ],
+   "challenge": "In your capture, find the SYN, SYN-ACK and ACK of one TCP connection. Screenshot the 3 packets.",
+   "day": 16,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "DNS in detail",
+   "tasks": [
+    "TryHackMe: 'DNS in Detail'",
+    "Learn record types: A, AAAA, CNAME, MX, TXT, NS"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: DNS in Detail",
+     "url": "https://tryhackme.com/room/dnsindetail"
+    }
+   ],
+   "tools": [
+    "`dig`",
+    "`nslookup`"
+   ],
+   "challenge": "Use `dig` to find the MX and TXT records of owasp.org. What does the SPF TXT record tell you?",
+   "day": 17,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "DHCP, routing & NAT",
+   "tasks": [
+    "Learn DHCP DORA (Discover, Offer, Request, Ack)",
+    "Learn how NAT lets many private IPs share one public IP",
+    "Professor Messer: routing & NAT videos"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Network+ (N10-009)",
+     "url": "https://www.professormesser.com/network-plus/n10-009/n10-009-training-course/"
+    }
+   ],
+   "tools": [
+    "`ip route`",
+    "`traceroute`"
+   ],
+   "challenge": "Run `traceroute google.com`. How many hops? Which hop is your own router?",
+   "day": 18,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "HTTP & HTTPS",
+   "tasks": [
+    "TryHackMe: 'HTTP in Detail'",
+    "Learn methods (GET/POST), status codes, headers"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: HTTP in Detail",
+     "url": "https://tryhackme.com/room/httpindetail"
+    },
+    {
+     "name": "MDN Web Docs",
+     "url": "https://developer.mozilla.org"
+    }
+   ],
+   "tools": [
+    "`curl -I`",
+    "Browser DevTools"
+   ],
+   "challenge": "Run `curl -I https://owasp.org`. Write down the status code and 3 security-related headers you see.",
+   "day": 19,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "TLS & certificates",
+   "tasks": [
+    "Learn how TLS protects HTTP: certificates, CAs, handshake (high level)",
+    "Inspect a website's certificate in your browser"
+   ],
+   "links": [
+    {
+     "name": "MDN Web Docs",
+     "url": "https://developer.mozilla.org"
+    }
+   ],
+   "tools": [
+    "`openssl s_client -connect example.com:443`"
+   ],
+   "challenge": "For github.com find: certificate issuer, expiry date, and which TLS version was negotiated.",
+   "day": 20,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "Week 3 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Ports, protocols, TCP vs UDP; TCP handshake + your first Wireshark capture; DNS in detail; DHCP, routing & NAT; HTTP & HTTPS; TLS & certificates",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Ports, protocols, TCP vs UDP' out loud in 2 minutes as if to a friend.",
+   "day": 21,
+   "phase_name": "Phase 1 - Computer & Networking Foundations"
+  },
+  {
+   "phase": "p1",
+   "title": "Firewalls",
+   "tasks": [
+    "Learn stateless vs stateful firewalls",
+    "Configure `ufw` in your Ubuntu VM"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Network+ (N10-009)",
+     "url": "https://www.professormesser.com/network-plus/n10-009/n10-009-training-course/"
+    }
+   ],
+   "tools": [
+    "`ufw`"
+   ],
+   "challenge": "Enable ufw, allow only SSH (22) inbound, then list the rules with `sudo ufw status verbose`.",
+   "day": 22,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "The OSI model",
+   "tasks": [
+    "Learn the 7 layers (Please Do Not Throw Sausage Pizza Away)",
+    "TryHackMe: 'Network Security Essentials'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Network Security Essentials",
+     "url": "https://tryhackme.com/room/networksecurityessentials"
+    },
+    {
+     "name": "Professor Messer Network+ (N10-009)",
+     "url": "https://www.professormesser.com/network-plus/n10-009/n10-009-training-course/"
+    }
+   ],
+   "tools": [],
+   "challenge": "Map these to an OSI layer: switch, router, HTTP, TCP, IP, Ethernet, TLS, DNS, MAC address, cable.",
+   "day": 23,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "TCP/IP model + Wireshark filters",
+   "tasks": [
+    "Compare TCP/IP (4 layers) with OSI (7 layers)",
+    "Practice Wireshark display filters: `ip.addr==`, `tcp.port==`, `http`, `dns`",
+    "Download `http.cap` from Wireshark Sample Captures"
+   ],
+   "links": [
+    {
+     "name": "Wireshark Sample Captures",
+     "url": "https://wiki.wireshark.org/SampleCaptures"
+    },
+    {
+     "name": "Wireshark download",
+     "url": "https://www.wireshark.org/download.html"
+    }
+   ],
+   "tools": [
+    "Wireshark"
+   ],
+   "challenge": "Open http.cap: what URL was requested and what web server answered?",
+   "day": 24,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p1",
+   "title": "Networking checkpoint: build a cheat sheet",
+   "tasks": [
+    "Write a one-page networking cheat sheet (ports, OSI, subnetting, DNS records, commands)",
+    "Push it to your cybersec-notes repo",
+    "TryHackMe: 'Beginner Path Intro'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Beginner Path Intro",
+     "url": "https://tryhackme.com/room/beginnerpathintro"
+    }
+   ],
+   "tools": [
+    "GitHub"
+   ],
+   "challenge": "Without notes, explain what happens when you type a URL in the browser and press Enter (DNS -> TCP -> TLS -> HTTP).",
+   "day": 25,
+   "phase_name": "Phase 1 - Computer & Networking Foundations",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Linux filesystem & navigation",
+   "tasks": [
+    "Linux Journey: 'Command Line' section",
+    "Learn the hierarchy: /etc, /home, /var, /tmp, /usr, /bin",
+    "Read OverTheWire Bandit rules, then solve level 0"
+   ],
+   "links": [
+    {
+     "name": "Linux Journey",
+     "url": "https://linuxjourney.com"
+    },
+    {
+     "name": "OverTheWire Bandit",
+     "url": "https://overthewire.org/wargames/bandit/"
+    },
+    {
+     "name": "OverTheWire Bandit 0 -> 1",
+     "url": "https://overthewire.org/wargames/bandit/bandit1.html"
+    }
+   ],
+   "tools": [
+    "`ls`, `cd`, `pwd`, `cat`",
+    "`ssh`"
+   ],
+   "challenge": "Solve Bandit 0 -> 1. Save the password in a private notes file (not on GitHub!).",
+   "day": 26,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Files & directories",
+   "tasks": [
+    "TryHackMe: 'Linux Fundamentals Part 1'",
+    "Practice cp, mv, rm, mkdir, touch, special filenames (`-`, spaces, hidden)"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Linux Fundamentals Part 1",
+     "url": "https://tryhackme.com/room/linuxfundamentalspart1"
+    },
+    {
+     "name": "OverTheWire Bandit 1 -> 2",
+     "url": "https://overthewire.org/wargames/bandit/bandit2.html"
+    },
+    {
+     "name": "OverTheWire Bandit 2 -> 3",
+     "url": "https://overthewire.org/wargames/bandit/bandit3.html"
+    },
+    {
+     "name": "OverTheWire Bandit 3 -> 4",
+     "url": "https://overthewire.org/wargames/bandit/bandit4.html"
+    }
+   ],
+   "tools": [
+    "`cp`, `mv`, `rm`, `mkdir`"
+   ],
+   "challenge": "Solve Bandit levels 1 -> 4.",
+   "day": 27,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Week 4 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Firewalls; The OSI model; TCP/IP model + Wireshark filters; Networking checkpoint: build a cheat sheet; Linux filesystem & navigation; Files & directories",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Firewalls' out loud in 2 minutes as if to a friend.",
+   "day": 28,
+   "phase_name": "Phase 2 - Operating System Fundamentals"
+  },
+  {
+   "phase": "p2",
+   "title": "Finding files: find & file",
+   "tasks": [
+    "Learn `find` with -name, -type, -size, -user, -group",
+    "Learn `file` to detect file types"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 4 -> 5",
+     "url": "https://overthewire.org/wargames/bandit/bandit5.html"
+    },
+    {
+     "name": "OverTheWire Bandit 5 -> 6",
+     "url": "https://overthewire.org/wargames/bandit/bandit6.html"
+    },
+    {
+     "name": "OverTheWire Bandit 6 -> 7",
+     "url": "https://overthewire.org/wargames/bandit/bandit7.html"
+    }
+   ],
+   "tools": [
+    "`find`",
+    "`file`"
+   ],
+   "challenge": "Solve Bandit 4 -> 7.",
+   "day": 29,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "grep, sort, uniq & pipes",
+   "tasks": [
+    "TryHackMe: 'Linux Fundamentals Part 2'",
+    "Learn pipes `|` and redirection `>`, `>>`, `2>/dev/null`"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Linux Fundamentals Part 2",
+     "url": "https://tryhackme.com/room/linuxfundamentalspart2"
+    },
+    {
+     "name": "OverTheWire Bandit 7 -> 8",
+     "url": "https://overthewire.org/wargames/bandit/bandit8.html"
+    },
+    {
+     "name": "OverTheWire Bandit 8 -> 9",
+     "url": "https://overthewire.org/wargames/bandit/bandit9.html"
+    },
+    {
+     "name": "OverTheWire Bandit 9 -> 10",
+     "url": "https://overthewire.org/wargames/bandit/bandit10.html"
+    }
+   ],
+   "tools": [
+    "`grep`",
+    "`sort | uniq -c`",
+    "`strings`"
+   ],
+   "challenge": "Solve Bandit 7 -> 10.",
+   "day": 30,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Encoding tricks on the command line",
+   "tasks": [
+    "Learn `base64 -d`, `tr` (ROT13), `xxd`, gzip/bzip2/tar",
+    "Bandit 12 is long - be patient and use a /tmp working dir"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 10 -> 11",
+     "url": "https://overthewire.org/wargames/bandit/bandit11.html"
+    },
+    {
+     "name": "OverTheWire Bandit 11 -> 12",
+     "url": "https://overthewire.org/wargames/bandit/bandit12.html"
+    },
+    {
+     "name": "OverTheWire Bandit 12 -> 13",
+     "url": "https://overthewire.org/wargames/bandit/bandit13.html"
+    },
+    {
+     "name": "CyberChef",
+     "url": "https://gchq.github.io/CyberChef/"
+    }
+   ],
+   "tools": [
+    "`base64`",
+    "`tr`",
+    "`xxd`",
+    "`tar`"
+   ],
+   "challenge": "Solve Bandit 10 -> 13.",
+   "day": 31,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Permissions, users & groups",
+   "tasks": [
+    "TryHackMe: 'Linux Fundamentals Part 3'",
+    "Learn rwx, octal (755, 640), chown, sudo, /etc/passwd vs /etc/shadow"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Linux Fundamentals Part 3",
+     "url": "https://tryhackme.com/room/linuxfundamentalspart3"
+    },
+    {
+     "name": "Linux Journey",
+     "url": "https://linuxjourney.com"
+    }
+   ],
+   "tools": [
+    "`chmod`",
+    "`chown`",
+    "`useradd`",
+    "`id`"
+   ],
+   "challenge": "In your VM create user `analyst`, group `soc`, and a folder only the soc group can read (mode 750).",
+   "day": 32,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "SSH & keys",
+   "tasks": [
+    "Learn SSH key auth (private vs public key)",
+    "Generate an ed25519 key and SSH from your host into your VM"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 13 -> 14",
+     "url": "https://overthewire.org/wargames/bandit/bandit14.html"
+    },
+    {
+     "name": "OverTheWire Bandit 14 -> 15",
+     "url": "https://overthewire.org/wargames/bandit/bandit15.html"
+    }
+   ],
+   "tools": [
+    "`ssh-keygen`",
+    "`ssh -i`",
+    "`scp`"
+   ],
+   "challenge": "Solve Bandit 13 -> 15 and log into your own VM with a key instead of a password.",
+   "day": 33,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Networking from the terminal: nc & openssl",
+   "tasks": [
+    "Learn `nc` (netcat) to talk to ports",
+    "Learn `openssl s_client` for TLS ports",
+    "Learn basic `nmap` on localhost only"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 15 -> 16",
+     "url": "https://overthewire.org/wargames/bandit/bandit16.html"
+    },
+    {
+     "name": "OverTheWire Bandit 16 -> 17",
+     "url": "https://overthewire.org/wargames/bandit/bandit17.html"
+    },
+    {
+     "name": "OverTheWire Bandit 17 -> 18",
+     "url": "https://overthewire.org/wargames/bandit/bandit18.html"
+    }
+   ],
+   "tools": [
+    "`nc`",
+    "`openssl`",
+    "`nmap localhost`"
+   ],
+   "challenge": "Solve Bandit 15 -> 18.",
+   "day": 34,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Week 5 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Finding files: find & file; grep, sort, uniq & pipes; Encoding tricks on the command line; Permissions, users & groups; SSH & keys; Networking from the terminal: nc & openssl",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Finding files: find & file' out loud in 2 minutes as if to a friend.",
+   "day": 35,
+   "phase_name": "Phase 2 - Operating System Fundamentals"
+  },
+  {
+   "phase": "p2",
+   "title": "Processes & services",
+   "tasks": [
+    "Learn ps, top, kill, jobs, systemctl, journalctl",
+    "Install nginx in your VM and manage it as a service"
+   ],
+   "links": [
+    {
+     "name": "Linux Journey",
+     "url": "https://linuxjourney.com"
+    }
+   ],
+   "tools": [
+    "`systemctl`",
+    "`journalctl`",
+    "`kill`"
+   ],
+   "challenge": "Install nginx, stop/start it, and find its log lines with `journalctl -u nginx`.",
+   "day": 36,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Package management, PATH & environment variables",
+   "tasks": [
+    "Learn apt (install, remove, search), dpkg",
+    "Learn env vars: `$PATH`, `$HOME`, `export`, `.bashrc`"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 18 -> 19",
+     "url": "https://overthewire.org/wargames/bandit/bandit19.html"
+    },
+    {
+     "name": "OverTheWire Bandit 19 -> 20",
+     "url": "https://overthewire.org/wargames/bandit/bandit20.html"
+    },
+    {
+     "name": "OverTheWire Bandit 20 -> 21",
+     "url": "https://overthewire.org/wargames/bandit/bandit21.html"
+    }
+   ],
+   "tools": [
+    "`apt`",
+    "`env`",
+    "`export`"
+   ],
+   "challenge": "Solve Bandit 18 -> 21. Then add `~/bin` to your PATH permanently.",
+   "day": 37,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Cron & scheduled jobs",
+   "tasks": [
+    "Learn crontab syntax (`m h dom mon dow`)",
+    "Understand why writable cron scripts are a privilege-escalation risk"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 21 -> 22",
+     "url": "https://overthewire.org/wargames/bandit/bandit22.html"
+    },
+    {
+     "name": "OverTheWire Bandit 22 -> 23",
+     "url": "https://overthewire.org/wargames/bandit/bandit23.html"
+    },
+    {
+     "name": "OverTheWire Bandit 23 -> 24",
+     "url": "https://overthewire.org/wargames/bandit/bandit24.html"
+    },
+    {
+     "name": "crontab.guru",
+     "url": "https://crontab.guru"
+    }
+   ],
+   "tools": [
+    "`crontab -e`",
+    "crontab.guru"
+   ],
+   "challenge": "Solve Bandit 21 -> 24.",
+   "day": 38,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Linux logs",
+   "tasks": [
+    "Explore /var/log (auth.log, syslog)",
+    "TryHackMe: 'Intro to Logs'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Intro to Logs",
+     "url": "https://tryhackme.com/room/introtologs"
+    }
+   ],
+   "tools": [
+    "`grep`",
+    "`tail -f`",
+    "`journalctl`"
+   ],
+   "challenge": "Make 3 failed SSH logins to your VM, then find them in /var/log/auth.log with one grep command.",
+   "day": 39,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Bandit: scripting & git",
+   "tasks": [
+    "Bandit 24 needs a small brute-force loop (bash)",
+    "Bandit 27-31 teach git - use `git log`, branches and tags"
+   ],
+   "links": [
+    {
+     "name": "OverTheWire Bandit 24 -> 25",
+     "url": "https://overthewire.org/wargames/bandit/bandit25.html"
+    },
+    {
+     "name": "OverTheWire Bandit 27 -> 28",
+     "url": "https://overthewire.org/wargames/bandit/bandit28.html"
+    },
+    {
+     "name": "OverTheWire Bandit 28 -> 29",
+     "url": "https://overthewire.org/wargames/bandit/bandit29.html"
+    },
+    {
+     "name": "OverTheWire Bandit 29 -> 30",
+     "url": "https://overthewire.org/wargames/bandit/bandit30.html"
+    },
+    {
+     "name": "OverTheWire Bandit 30 -> 31",
+     "url": "https://overthewire.org/wargames/bandit/bandit31.html"
+    },
+    {
+     "name": "OverTheWire Bandit 31 -> 32",
+     "url": "https://overthewire.org/wargames/bandit/bandit32.html"
+    }
+   ],
+   "tools": [
+    "bash loops",
+    "`git`"
+   ],
+   "challenge": "Solve Bandit 24 -> 25 and 27 -> 32. (25-26 are optional tricky ones.)",
+   "day": 40,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Windows fundamentals 1",
+   "tasks": [
+    "TryHackMe: 'Windows Fundamentals 1'",
+    "Explore: file system (NTFS), Task Manager, services.msc"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Windows Fundamentals 1",
+     "url": "https://tryhackme.com/room/windowsfundamentals1xbx"
+    },
+    {
+     "name": "Microsoft Learn",
+     "url": "https://learn.microsoft.com/en-us/training/"
+    }
+   ],
+   "tools": [
+    "Task Manager",
+    "services.msc"
+   ],
+   "challenge": "List 3 Windows services, their startup type and the account they run as.",
+   "day": 41,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Week 6 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Processes & services; Package management, PATH & environment variables; Cron & scheduled jobs; Linux logs; Bandit: scripting & git; Windows fundamentals 1",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Processes & services' out loud in 2 minutes as if to a friend.",
+   "day": 42,
+   "phase_name": "Phase 2 - Operating System Fundamentals"
+  },
+  {
+   "phase": "p2",
+   "title": "Windows users, permissions & UAC",
+   "tasks": [
+    "TryHackMe: 'Windows Fundamentals 2'",
+    "Learn local users/groups, UAC, NTFS permissions"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Windows Fundamentals 2",
+     "url": "https://tryhackme.com/room/windowsfundamentals2x0x"
+    }
+   ],
+   "tools": [
+    "lusrmgr.msc",
+    "`whoami /priv`"
+   ],
+   "challenge": "Run `whoami /all` and explain 3 privileges listed.",
+   "day": 43,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Windows command line",
+   "tasks": [
+    "TryHackMe: 'Windows Command Line'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Windows Command Line",
+     "url": "https://tryhackme.com/room/windowscommandline"
+    }
+   ],
+   "tools": [
+    "`ipconfig /all`",
+    "`netstat -ano`",
+    "`tasklist`"
+   ],
+   "challenge": "Use `netstat -ano` + `tasklist` to find which program owns one listening port.",
+   "day": 44,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "Windows Event Logs",
+   "tasks": [
+    "TryHackMe: 'Windows Fundamentals 3'",
+    "Open Event Viewer -> Windows Logs -> Security"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Windows Fundamentals 3",
+     "url": "https://tryhackme.com/room/windowsfundamentals3xzx"
+    }
+   ],
+   "tools": [
+    "Event Viewer"
+   ],
+   "challenge": "Find a 4624 (successful logon) and 4625 (failed logon) event. What logon type did each have?",
+   "day": 45,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p2",
+   "title": "PowerShell basics",
+   "tasks": [
+    "Microsoft Learn: PowerShell 101 (chapters 1-3)",
+    "Learn Get-Help, Get-Command, Get-Member, the pipeline"
+   ],
+   "links": [
+    {
+     "name": "Microsoft Learn: PowerShell 101",
+     "url": "https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/00-introduction"
+    }
+   ],
+   "tools": [
+    "PowerShell"
+   ],
+   "challenge": "One-liner: show the 5 processes using the most CPU (`Get-Process | Sort-Object CPU -Descending | Select-Object -First 5`).",
+   "day": 46,
+   "phase_name": "Phase 2 - Operating System Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "How web applications work",
+   "tasks": [
+    "TryHackMe: 'Web Application Basics'",
+    "MDN: An overview of HTTP",
+    "Remember: no SQL injection before you understand SQL and web apps"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Web Application Basics",
+     "url": "https://tryhackme.com/room/webapplicationbasics"
+    },
+    {
+     "name": "MDN: HTTP overview",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"
+    }
+   ],
+   "tools": [
+    "Browser DevTools (Network tab)"
+   ],
+   "challenge": "Open DevTools on any site and list every request header your browser sent for the main page.",
+   "day": 47,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "HTML & JavaScript basics",
+   "tasks": [
+    "MDN: Getting started with the web (HTML + JS)",
+    "Re-read your own todolist2 `script.js` - you already wrote JS!"
+   ],
+   "links": [
+    {
+     "name": "MDN: Getting started",
+     "url": "https://developer.mozilla.org/en-US/docs/Learn"
+    },
+    {
+     "name": "freeCodeCamp",
+     "url": "https://www.freecodecamp.org"
+    }
+   ],
+   "tools": [
+    "VS Code",
+    "DevTools Console"
+   ],
+   "challenge": "Your todo app uses `textContent`. Write in notes why `innerHTML` with user input would be dangerous (hint: XSS).",
+   "day": 48,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Week 7 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Windows users, permissions & UAC; Windows command line; Windows Event Logs; PowerShell basics; How web applications work; HTML & JavaScript basics",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Windows users, permissions & UAC' out loud in 2 minutes as if to a friend.",
+   "day": 49,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals"
+  },
+  {
+   "phase": "p3",
+   "title": "Cookies, sessions, authentication vs authorization",
+   "tasks": [
+    "MDN: HTTP cookies",
+    "Learn session IDs, cookie flags: HttpOnly, Secure, SameSite",
+    "Authentication = who you are, Authorization = what you may do"
+   ],
+   "links": [
+    {
+     "name": "MDN: Cookies",
+     "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies"
+    }
+   ],
+   "tools": [
+    "DevTools -> Application -> Cookies"
+   ],
+   "challenge": "Log into a site you use. Which cookie is the session cookie, and which flags does it have?",
+   "day": 50,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "REST APIs & JSON",
+   "tasks": [
+    "Learn REST verbs (GET, POST, PUT, DELETE), JSON, status codes",
+    "Call the public GitHub API"
+   ],
+   "links": [
+    {
+     "name": "GitHub REST API docs",
+     "url": "https://docs.github.com/en/rest"
+    }
+   ],
+   "tools": [
+    "`curl`",
+    "`jq`"
+   ],
+   "challenge": "`curl https://api.github.com/users/<your-username>` and use jq to print only your public repo count.",
+   "day": 51,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "SQL basics 1",
+   "tasks": [
+    "SQLBolt lessons 1-6 (SELECT, WHERE, ORDER BY, LIMIT)"
+   ],
+   "links": [
+    {
+     "name": "SQLBolt",
+     "url": "https://sqlbolt.com"
+    }
+   ],
+   "tools": [],
+   "challenge": "Finish SQLBolt lessons 1-6.",
+   "day": 52,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "SQL basics 2",
+   "tasks": [
+    "SQLBolt lessons 7-12 (JOINs, NULL, expressions, aggregates)"
+   ],
+   "links": [
+    {
+     "name": "SQLBolt",
+     "url": "https://sqlbolt.com"
+    }
+   ],
+   "tools": [],
+   "challenge": "Finish SQLBolt lessons 7-12.",
+   "day": 53,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "SQL basics 3",
+   "tasks": [
+    "SQLBolt lessons 13-18 (INSERT, UPDATE, DELETE, CREATE)",
+    "Think: how is a login query built? `SELECT * FROM users WHERE name='?' AND pass='?'`"
+   ],
+   "links": [
+    {
+     "name": "SQLBolt",
+     "url": "https://sqlbolt.com"
+    }
+   ],
+   "tools": [],
+   "challenge": "Finish SQLBolt. Then write in notes what happens to that login query if the name is `admin'--`.",
+   "day": 54,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 1: variables, types, conditionals",
+   "tasks": [
+    "Install Python 3 + VS Code",
+    "CS50P Lecture 0 (Functions, Variables) and Lecture 1 (Conditionals)"
+   ],
+   "links": [
+    {
+     "name": "CS50P - Python (Harvard)",
+     "url": "https://cs50.harvard.edu/python/"
+    },
+    {
+     "name": "Python downloads",
+     "url": "https://www.python.org/downloads/"
+    }
+   ],
+   "tools": [
+    "Python 3",
+    "VS Code"
+   ],
+   "challenge": "Write `grade.py`: read a score 0-100 and print A/B/C/D/F. Handle invalid input.",
+   "day": 55,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Week 8 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Cookies, sessions, authentication vs authorization; REST APIs & JSON; SQL basics 1; SQL basics 2; SQL basics 3; Python 1: variables, types, conditionals",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Cookies, sessions, authentication vs authorization' out loud in 2 minutes as if to a friend.",
+   "day": 56,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals"
+  },
+  {
+   "phase": "p3",
+   "title": "Python 2: loops & functions",
+   "tasks": [
+    "CS50P Lecture 2 (Loops)",
+    "TryHackMe: 'Python Basics'"
+   ],
+   "links": [
+    {
+     "name": "CS50P - Python (Harvard)",
+     "url": "https://cs50.harvard.edu/python/"
+    },
+    {
+     "name": "TryHackMe: Python Basics",
+     "url": "https://tryhackme.com/room/pythonbasics"
+    }
+   ],
+   "tools": [
+    "Python 3"
+   ],
+   "challenge": "Write `is_prime(n)` and print all primes below 100.",
+   "day": 57,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 3: lists & dictionaries",
+   "tasks": [
+    "Practice list/dict operations, comprehensions",
+    "Automate the Boring Stuff: chapters 4-5"
+   ],
+   "links": [
+    {
+     "name": "Automate the Boring Stuff with Python",
+     "url": "https://automatetheboringstuff.com"
+    }
+   ],
+   "tools": [
+    "Python 3"
+   ],
+   "challenge": "Count word frequency in any .txt file and print the top 10 words.",
+   "day": 58,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 4: files & exceptions",
+   "tasks": [
+    "CS50P Lecture 3 (Exceptions) and Lecture 6 (File I/O)"
+   ],
+   "links": [
+    {
+     "name": "CS50P - Python (Harvard)",
+     "url": "https://cs50.harvard.edu/python/"
+    }
+   ],
+   "tools": [
+    "Python 3"
+   ],
+   "challenge": "Parse your VM's /var/log/auth.log and count failed SSH logins per IP address.",
+   "day": 59,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 5: modules & command-line arguments",
+   "tasks": [
+    "Learn `import`, `argparse`, `sys.argv`, virtual environments (`python -m venv`)"
+   ],
+   "links": [
+    {
+     "name": "Python argparse tutorial",
+     "url": "https://docs.python.org/3/howto/argparse.html"
+    }
+   ],
+   "tools": [
+    "argparse",
+    "venv"
+   ],
+   "challenge": "Turn yesterday's log parser into `logparse.py --file auth.log --top 5`.",
+   "day": 60,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 6: HTTP requests",
+   "tasks": [
+    "Automate the Boring Stuff: Web Scraping chapter",
+    "Install `requests` in a venv"
+   ],
+   "links": [
+    {
+     "name": "Automate the Boring Stuff with Python",
+     "url": "https://automatetheboringstuff.com"
+    },
+    {
+     "name": "requests docs",
+     "url": "https://requests.readthedocs.io"
+    }
+   ],
+   "tools": [
+    "requests"
+   ],
+   "challenge": "Script: given a URL, print status code and whether HSTS, CSP and X-Frame-Options headers are present.",
+   "day": 61,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 7: sockets & a banner grabber",
+   "tasks": [
+    "Learn the `socket` module: connect, send, recv",
+    "TryHackMe: 'Custom Tooling with Python'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Custom Tooling with Python",
+     "url": "https://tryhackme.com/room/customtoolingpython"
+    },
+    {
+     "name": "Python socket docs",
+     "url": "https://docs.python.org/3/library/socket.html"
+    }
+   ],
+   "tools": [
+    "socket"
+   ],
+   "challenge": "Grab the SSH banner of YOUR VM with a 10-line Python script.",
+   "day": 62,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Week 9 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Python 2: loops & functions; Python 3: lists & dictionaries; Python 4: files & exceptions; Python 5: modules & command-line arguments; Python 6: HTTP requests; Python 7: sockets & a banner grabber",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Python 2: loops & functions' out loud in 2 minutes as if to a friend.",
+   "day": 63,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals"
+  },
+  {
+   "phase": "p3",
+   "title": "Python 8: build a port scanner (your own VM only)",
+   "tasks": [
+    "Combine sockets + threads (`concurrent.futures`)",
+    "Only scan machines you own - roadmap rule #1"
+   ],
+   "links": [
+    {
+     "name": "concurrent.futures docs",
+     "url": "https://docs.python.org/3/library/concurrent.futures.html"
+    }
+   ],
+   "tools": [
+    "Python 3"
+   ],
+   "challenge": "Scan ports 1-1024 on your VM in under 10 seconds. Compare with `nmap` output.",
+   "day": 64,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Python 9: hashing & a password strength checker",
+   "tasks": [
+    "Learn `hashlib` (md5, sha256) and why fast hashes are bad for passwords (use bcrypt/argon2)"
+   ],
+   "links": [
+    {
+     "name": "hashlib docs",
+     "url": "https://docs.python.org/3/library/hashlib.html"
+    }
+   ],
+   "tools": [
+    "hashlib"
+   ],
+   "challenge": "Build `pwcheck.py`: score length, character classes, and reject passwords from a small common-password list.",
+   "day": 65,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Bash scripting 1",
+   "tasks": [
+    "learnshell.org: basics, variables, arrays, loops, conditions"
+   ],
+   "links": [
+    {
+     "name": "learnshell.org",
+     "url": "https://www.learnshell.org"
+    }
+   ],
+   "tools": [
+    "bash"
+   ],
+   "challenge": "Write `sweep.sh` that pings 192.168.x.1-254 on YOUR home network and prints live hosts.",
+   "day": 66,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Bash scripting 2: functions & automation",
+   "tasks": [
+    "Learn functions, `$1 $2 $@`, exit codes, `set -euo pipefail`"
+   ],
+   "links": [
+    {
+     "name": "learnshell.org",
+     "url": "https://www.learnshell.org"
+    }
+   ],
+   "tools": [
+    "bash",
+    "cron"
+   ],
+   "challenge": "Write `backup.sh` that tars your notes folder with a date in the filename; schedule it with cron.",
+   "day": 67,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "PowerShell scripting",
+   "tasks": [
+    "Microsoft Learn: PowerShell 101 chapters 4-6 (functions, scripts)"
+   ],
+   "links": [
+    {
+     "name": "Microsoft Learn: PowerShell 101",
+     "url": "https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/00-introduction"
+    }
+   ],
+   "tools": [
+    "PowerShell"
+   ],
+   "challenge": "Script that lists local users, whether they are enabled, and their last logon (`Get-LocalUser`).",
+   "day": 68,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "(Optional) C basics: memory, pointers, stack",
+   "tasks": [
+    "CS50x Week 4: Memory - pointers, malloc, stack vs heap",
+    "Optional for web/SOC paths, important for RE & pwn later"
+   ],
+   "links": [
+    {
+     "name": "CS50x (Harvard)",
+     "url": "https://cs50.harvard.edu/x/"
+    }
+   ],
+   "tools": [
+    "gcc"
+   ],
+   "challenge": "Write a C program that prints the address of a local variable and a malloc'd buffer. Which is stack, which is heap?",
+   "day": 69,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p3",
+   "title": "Week 10 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Python 8: build a port scanner (your own VM only); Python 9: hashing & a password strength checker; Bash scripting 1; Bash scripting 2: functions & automation; PowerShell scripting; (Optional) C basics: memory, pointers, stack",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Python 8: build a port scanner (your own VM only)' out loud in 2 minutes as if to a friend.",
+   "day": 70,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals"
+  },
+  {
+   "phase": "p3",
+   "title": "Git & GitHub portfolio day",
+   "tasks": [
+    "Create a `security-scripts` repo with your port scanner, log parser and pwcheck",
+    "Write a README for each: problem, usage, what you learned"
+   ],
+   "links": [
+    {
+     "name": "GitHub Docs: About READMEs",
+     "url": "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes"
+    }
+   ],
+   "tools": [
+    "git",
+    "GitHub"
+   ],
+   "challenge": "Push the repo and pin it on your GitHub profile.",
+   "day": 71,
+   "phase_name": "Phase 3 - Web & Programming Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "CIA triad & AAA",
+   "tasks": [
+    "Professor Messer Security+: security concepts videos",
+    "Learn Confidentiality, Integrity, Availability + Authentication, Authorization, Accounting"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Security+ (SY0-701)",
+     "url": "https://www.professormesser.com/security-plus/sy0-701/sy0-701-training-course/"
+    },
+    {
+     "name": "NIST Glossary",
+     "url": "https://csrc.nist.gov/glossary"
+    }
+   ],
+   "tools": [],
+   "challenge": "For each: ransomware, a leaked database, a tampered bank transaction - which CIA pillar is hit?",
+   "day": 72,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Authentication, MFA & password storage",
+   "tasks": [
+    "Learn factors: know / have / are",
+    "Learn salting + slow hashing (bcrypt, argon2)",
+    "Enable MFA on your email and GitHub today"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Security+ (SY0-701)",
+     "url": "https://www.professormesser.com/security-plus/sy0-701/sy0-701-training-course/"
+    },
+    {
+     "name": "OWASP Password Storage Cheat Sheet",
+     "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+    }
+   ],
+   "tools": [
+    "Authenticator app"
+   ],
+   "challenge": "Explain in notes why SMS is the weakest second factor and why salts stop rainbow tables.",
+   "day": 73,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Encoding vs hashing vs encryption",
+   "tasks": [
+    "TryHackMe: 'CyberChef: The Basics'",
+    "Encoding = reversible, no key. Hashing = one-way. Encryption = reversible with key"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: CyberChef: The Basics",
+     "url": "https://tryhackme.com/room/cyberchefbasics"
+    },
+    {
+     "name": "CyberChef",
+     "url": "https://gchq.github.io/CyberChef/"
+    }
+   ],
+   "tools": [
+    "CyberChef"
+   ],
+   "challenge": "In CyberChef: Base64 'hello', MD5 'hello', AES-encrypt 'hello'. Explain which one is NOT security.",
+   "day": 74,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Symmetric vs asymmetric cryptography",
+   "tasks": [
+    "Learn AES (shared key) vs RSA/ECC (key pairs), key exchange",
+    "Use openssl on the command line"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Security+ (SY0-701)",
+     "url": "https://www.professormesser.com/security-plus/sy0-701/sy0-701-training-course/"
+    }
+   ],
+   "tools": [
+    "`openssl enc -aes-256-cbc -pbkdf2`",
+    "`openssl genpkey`"
+   ],
+   "challenge": "AES-encrypt a file with a password, then generate an RSA key pair and encrypt a short message with the public key.",
+   "day": 75,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Hashes & password cracking concepts",
+   "tasks": [
+    "TryHackMe: 'Crack the Hash'",
+    "Learn hash identification and wordlists (rockyou)"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Crack the Hash",
+     "url": "https://tryhackme.com/room/crackthehash"
+    },
+    {
+     "name": "hashcat example hashes",
+     "url": "https://hashcat.net/wiki/doku.php?id=example_hashes"
+    }
+   ],
+   "tools": [
+    "hashcat",
+    "John the Ripper",
+    "CrackStation"
+   ],
+   "challenge": "Finish Level 1 of Crack the Hash.",
+   "day": 76,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Week 11 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Git & GitHub portfolio day; CIA triad & AAA; Authentication, MFA & password storage; Encoding vs hashing vs encryption; Symmetric vs asymmetric cryptography; Hashes & password cracking concepts",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Git & GitHub portfolio day' out loud in 2 minutes as if to a friend.",
+   "day": 77,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals"
+  },
+  {
+   "phase": "p4",
+   "title": "Digital signatures & PKI",
+   "tasks": [
+    "Learn: sign with private key, verify with public key; certificate chains"
+   ],
+   "links": [
+    {
+     "name": "Professor Messer Security+ (SY0-701)",
+     "url": "https://www.professormesser.com/security-plus/sy0-701/sy0-701-training-course/"
+    },
+    {
+     "name": "GitHub: signing commits",
+     "url": "https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"
+    }
+   ],
+   "tools": [
+    "gpg",
+    "ssh-keygen -Y sign"
+   ],
+   "challenge": "Sign a git commit and get the 'Verified' badge on GitHub.",
+   "day": 78,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Vulnerabilities, threats, exploits, risk + CVE/CVSS",
+   "tasks": [
+    "TryHackMe: 'Vulnerabilities 101'",
+    "Learn how CVE IDs and CVSS scores work"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Vulnerabilities 101",
+     "url": "https://tryhackme.com/room/vulnerabilities101"
+    },
+    {
+     "name": "NVD",
+     "url": "https://nvd.nist.gov"
+    }
+   ],
+   "tools": [],
+   "challenge": "Look up CVE-2021-44228 (Log4Shell): CVSS score, affected product, and why it was so severe.",
+   "day": 79,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Attack surface & common attacks",
+   "tasks": [
+    "TryHackMe: 'Common Attacks'",
+    "Learn: phishing, malware, MITM, password attacks, DoS"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Common Attacks",
+     "url": "https://tryhackme.com/room/commonattacks"
+    }
+   ],
+   "tools": [],
+   "challenge": "List the full attack surface of your todolist2 web app (inputs, hosting, dependencies, users).",
+   "day": 80,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Phishing analysis",
+   "tasks": [
+    "TryHackMe: 'Phishing Emails 1'",
+    "Learn email headers: From vs Return-Path, SPF, DKIM, DMARC"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Phishing Emails 1",
+     "url": "https://tryhackme.com/room/phishingemails1tryoe"
+    }
+   ],
+   "tools": [
+    "Gmail 'Show original'"
+   ],
+   "challenge": "Open 'Show original' on a spam mail in your inbox. Did SPF/DKIM pass? What gave it away?",
+   "day": 81,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Defense in depth & security controls",
+   "tasks": [
+    "TryHackMe: 'Defensive Security Intro'",
+    "Learn control types: preventive, detective, corrective; technical vs administrative"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Defensive Security Intro",
+     "url": "https://tryhackme.com/room/defensivesecurityintroQR"
+    }
+   ],
+   "tools": [],
+   "challenge": "Design 5 layers of defense for a college computer lab. Name the control type of each.",
+   "day": 82,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "OWASP Top 10 - part 1 (A01-A05)",
+   "tasks": [
+    "Read A01 Broken Access Control to A05 Security Misconfiguration",
+    "TryHackMe: 'Intro to Web Application Security'"
+   ],
+   "links": [
+    {
+     "name": "OWASP Top 10",
+     "url": "https://owasp.org/www-project-top-ten/"
+    },
+    {
+     "name": "TryHackMe: Intro to Web Application Security",
+     "url": "https://tryhackme.com/room/introwebapplicationsecurity"
+    }
+   ],
+   "tools": [],
+   "challenge": "For each of A01-A05 write one real-world example in one line.",
+   "day": 83,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Week 12 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Digital signatures & PKI; Vulnerabilities, threats, exploits, risk + CVE/CVSS; Attack surface & common attacks; Phishing analysis; Defense in depth & security controls; OWASP Top 10 - part 1 (A01-A05)",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Digital signatures & PKI' out loud in 2 minutes as if to a friend.",
+   "day": 84,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals"
+  },
+  {
+   "phase": "p4",
+   "title": "OWASP Top 10 - part 2 (A06-A10)",
+   "tasks": [
+    "Read A06 Vulnerable Components to A10 SSRF",
+    "TryHackMe: 'Web Security Essentials'"
+   ],
+   "links": [
+    {
+     "name": "OWASP Top 10",
+     "url": "https://owasp.org/www-project-top-ten/"
+    },
+    {
+     "name": "TryHackMe: Web Security Essentials",
+     "url": "https://tryhackme.com/room/websecurityessentials"
+    }
+   ],
+   "tools": [],
+   "challenge": "For each of A06-A10 write how a developer would prevent it.",
+   "day": 85,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Threat modeling with STRIDE",
+   "tasks": [
+    "Read the OWASP Threat Modeling cheat sheet",
+    "STRIDE: Spoofing, Tampering, Repudiation, Info disclosure, DoS, Elevation of privilege"
+   ],
+   "links": [
+    {
+     "name": "OWASP Threat Modeling Cheat Sheet",
+     "url": "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html"
+    }
+   ],
+   "tools": [
+    "draw.io"
+   ],
+   "challenge": "Draw a data-flow diagram of a login page and list one STRIDE threat per category.",
+   "day": 86,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p4",
+   "title": "Milestone: ISC2 Certified in Cybersecurity (free)",
+   "tasks": [
+    "Read about ISC2 CC - free training + exam voucher (when available)",
+    "Register and start the free official training (1 module/week alongside this plan)"
+   ],
+   "links": [
+    {
+     "name": "ISC2 CC",
+     "url": "https://www.isc2.org/certifications/cc"
+    },
+    {
+     "name": "Professor Messer Security+ (SY0-701)",
+     "url": "https://www.professormesser.com/security-plus/sy0-701/sy0-701-training-course/"
+    }
+   ],
+   "tools": [],
+   "challenge": "Register for ISC2 CC training and write down your target exam month.",
+   "day": 87,
+   "phase_name": "Phase 4 - Cybersecurity Fundamentals",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Burp Suite setup & Repeater",
+   "tasks": [
+    "Install Burp Suite Community and use its built-in browser",
+    "TryHackMe: 'Burp Suite: Repeater'"
+   ],
+   "links": [
+    {
+     "name": "Burp Suite Community",
+     "url": "https://portswigger.net/burp/communitydownload"
+    },
+    {
+     "name": "TryHackMe: Burp Suite: Repeater",
+     "url": "https://tryhackme.com/room/burpsuiterepeater"
+    },
+    {
+     "name": "Burp getting started",
+     "url": "https://portswigger.net/burp/documentation/desktop/getting-started"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Intercept a request in a lab, change a parameter in Repeater and observe the different response.",
+   "day": 88,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "SQL injection 1 (PortSwigger)",
+   "tasks": [
+    "Read the PortSwigger SQL injection topic",
+    "Solve the first 2 Apprentice labs (WHERE clause, login bypass)"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: SQL injection",
+     "url": "https://portswigger.net/web-security/sql-injection"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve both labs and explain the payload in your notes.",
+   "day": 89,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "SQL injection 2: UNION attacks",
+   "tasks": [
+    "PortSwigger: SQL injection UNION attacks",
+    "Learn to find column count and which columns show text"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: SQLi UNION attacks",
+     "url": "https://portswigger.net/web-security/sql-injection/union-attacks"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve the 'retrieving data from other tables' lab.",
+   "day": 90,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Week 13 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: OWASP Top 10 - part 2 (A06-A10); Threat modeling with STRIDE; Milestone: ISC2 Certified in Cybersecurity (free); Burp Suite setup & Repeater; SQL injection 1 (PortSwigger); SQL injection 2: UNION attacks",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'OWASP Top 10 - part 2 (A06-A10)' out loud in 2 minutes as if to a friend.",
+   "day": 91,
+   "phase_name": "Phase 5 - Hands-On Learning"
+  },
+  {
+   "phase": "p5",
+   "title": "Cross-site scripting (XSS)",
+   "tasks": [
+    "PortSwigger: Cross-site scripting",
+    "Solve reflected XSS and stored XSS apprentice labs"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: Cross-site scripting",
+     "url": "https://portswigger.net/web-security/cross-site-scripting"
+    }
+   ],
+   "tools": [
+    "Burp Suite",
+    "DevTools"
+   ],
+   "challenge": "Solve 2 XSS labs. Then explain why your todo app using `textContent` is safe.",
+   "day": 92,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Path traversal",
+   "tasks": [
+    "PortSwigger: Path traversal"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: Path traversal",
+     "url": "https://portswigger.net/web-security/file-path-traversal"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve the simple-case lab and 1 more (absolute path or nested sequences).",
+   "day": 93,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Access control & IDOR",
+   "tasks": [
+    "PortSwigger: Access control vulnerabilities (OWASP A01)"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: Access control",
+     "url": "https://portswigger.net/web-security/access-control"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve 3 apprentice access-control labs, including one IDOR.",
+   "day": 94,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Authentication vulnerabilities",
+   "tasks": [
+    "PortSwigger: Authentication vulnerabilities"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: Authentication",
+     "url": "https://portswigger.net/web-security/authentication"
+    }
+   ],
+   "tools": [
+    "Burp Suite Intruder"
+   ],
+   "challenge": "Solve 'username enumeration via different responses' and '2FA simple bypass'.",
+   "day": 95,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "OS command injection",
+   "tasks": [
+    "PortSwigger: OS command injection"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: OS command injection",
+     "url": "https://portswigger.net/web-security/os-command-injection"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve the simple-case lab and explain how input validation would have prevented it.",
+   "day": 96,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Server-side request forgery (SSRF)",
+   "tasks": [
+    "PortSwigger: SSRF (OWASP A10)"
+   ],
+   "links": [
+    {
+     "name": "PortSwigger Academy: SSRF",
+     "url": "https://portswigger.net/web-security/ssrf"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve the 'basic SSRF against the local server' lab.",
+   "day": 97,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Week 14 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Cross-site scripting (XSS); Path traversal; Access control & IDOR; Authentication vulnerabilities; OS command injection; Server-side request forgery (SSRF)",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Cross-site scripting (XSS)' out loud in 2 minutes as if to a friend.",
+   "day": 98,
+   "phase_name": "Phase 5 - Hands-On Learning"
+  },
+  {
+   "phase": "p5",
+   "title": "OWASP Juice Shop setup",
+   "tasks": [
+    "Install Docker in your VM",
+    "Run Juice Shop: `docker run -d -p 3000:3000 bkimminich/juice-shop`"
+   ],
+   "links": [
+    {
+     "name": "OWASP Juice Shop",
+     "url": "https://owasp.org/www-project-juice-shop/"
+    },
+    {
+     "name": "Pwning OWASP Juice Shop (free book)",
+     "url": "https://pwning.owasp-juice.shop"
+    }
+   ],
+   "tools": [
+    "Docker",
+    "Burp Suite"
+   ],
+   "challenge": "Find the hidden Score Board page.",
+   "day": 99,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Juice Shop: 1-star challenges",
+   "tasks": [
+    "Solve 1-star challenges only; use hints from the free book if stuck"
+   ],
+   "links": [
+    {
+     "name": "Pwning OWASP Juice Shop (free book)",
+     "url": "https://pwning.owasp-juice.shop"
+    }
+   ],
+   "tools": [
+    "Burp Suite",
+    "DevTools"
+   ],
+   "challenge": "Solve 5 one-star Juice Shop challenges.",
+   "day": 100,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "DVWA: SQLi & XSS on low security",
+   "tasks": [
+    "Run DVWA in Docker or follow its README",
+    "Set security to 'low', then try 'medium' and read the source code difference"
+   ],
+   "links": [
+    {
+     "name": "DVWA",
+     "url": "https://github.com/digininja/DVWA"
+    }
+   ],
+   "tools": [
+    "Docker",
+    "Burp Suite"
+   ],
+   "challenge": "Exploit SQL Injection on low AND medium. What changed in the code?",
+   "day": 101,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Passive reconnaissance",
+   "tasks": [
+    "TryHackMe: 'Passive Recon'",
+    "Learn whois, DNS, certificate transparency (crt.sh)"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Passive Recon",
+     "url": "https://tryhackme.com/room/passiverecon"
+    },
+    {
+     "name": "crt.sh",
+     "url": "https://crt.sh"
+    }
+   ],
+   "tools": [
+    "whois",
+    "dig",
+    "crt.sh"
+   ],
+   "challenge": "Use crt.sh to list subdomains of owasp.org (public data only - no scanning).",
+   "day": 102,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Active reconnaissance",
+   "tasks": [
+    "TryHackMe: 'Active Recon'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Active Recon",
+     "url": "https://tryhackme.com/room/activerecon"
+    }
+   ],
+   "tools": [
+    "ping",
+    "traceroute",
+    "telnet",
+    "nc"
+   ],
+   "challenge": "Finish the room. Write the difference between passive and active recon - and why active needs permission.",
+   "day": 103,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Nmap",
+   "tasks": [
+    "TryHackMe: 'Nmap' and 'Further Nmap'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Nmap",
+     "url": "https://tryhackme.com/room/nmap02"
+    },
+    {
+     "name": "TryHackMe: Further Nmap",
+     "url": "https://tryhackme.com/room/furthernmap"
+    },
+    {
+     "name": "Nmap book (free)",
+     "url": "https://nmap.org/book/"
+    }
+   ],
+   "tools": [
+    "nmap"
+   ],
+   "challenge": "Scan your own VM with `nmap -sV -sC` and explain every open port.",
+   "day": 104,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Week 15 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: OWASP Juice Shop setup; Juice Shop: 1-star challenges; DVWA: SQLi & XSS on low security; Passive reconnaissance; Active reconnaissance; Nmap",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'OWASP Juice Shop setup' out loud in 2 minutes as if to a friend.",
+   "day": 105,
+   "phase_name": "Phase 5 - Hands-On Learning"
+  },
+  {
+   "phase": "p5",
+   "title": "Network services 1 (SMB, Telnet, FTP)",
+   "tasks": [
+    "TryHackMe: 'Network Services'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Network Services",
+     "url": "https://tryhackme.com/room/networkservices"
+    }
+   ],
+   "tools": [
+    "smbclient",
+    "enum4linux",
+    "ftp"
+   ],
+   "challenge": "Finish the room.",
+   "day": 106,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Network services 2 (NFS, SMTP, MySQL)",
+   "tasks": [
+    "TryHackMe: 'Network Services 2'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Network Services 2",
+     "url": "https://tryhackme.com/room/networkservices2"
+    }
+   ],
+   "tools": [
+    "showmount",
+    "mysql client"
+   ],
+   "challenge": "Finish the room.",
+   "day": 107,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Brute force with Hydra",
+   "tasks": [
+    "TryHackMe: 'Hydra'",
+    "Then do 'Brute It'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Hydra",
+     "url": "https://tryhackme.com/room/hydra"
+    },
+    {
+     "name": "TryHackMe: Brute It",
+     "url": "https://tryhackme.com/room/bruteit"
+    }
+   ],
+   "tools": [
+    "hydra",
+    "john"
+   ],
+   "challenge": "Finish both rooms. Note how a lockout policy would have stopped you.",
+   "day": 108,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Metasploit introduction",
+   "tasks": [
+    "TryHackMe: 'Metasploit: Introduction'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Metasploit: Introduction",
+     "url": "https://tryhackme.com/room/metasploitintro"
+    }
+   ],
+   "tools": [
+    "msfconsole"
+   ],
+   "challenge": "Finish the room. Explain exploit vs payload vs module in your notes.",
+   "day": 109,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "First box: Pickle Rick",
+   "tasks": [
+    "TryHackMe: 'Pickle Rick' - recon -> web -> command injection",
+    "Write notes as you go: what you tried, what failed"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Pickle Rick",
+     "url": "https://tryhackme.com/room/picklerick"
+    }
+   ],
+   "tools": [
+    "nmap",
+    "gobuster/ffuf",
+    "Burp Suite"
+   ],
+   "challenge": "Find all 3 ingredients.",
+   "day": 110,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Box: Basic Pentesting",
+   "tasks": [
+    "TryHackMe: 'Basic Pentesting'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Basic Pentesting",
+     "url": "https://tryhackme.com/room/basicpentestingjt"
+    }
+   ],
+   "tools": [
+    "nmap",
+    "enum4linux",
+    "hydra"
+   ],
+   "challenge": "Root the box.",
+   "day": 111,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Week 16 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Network services 1 (SMB, Telnet, FTP); Network services 2 (NFS, SMTP, MySQL); Brute force with Hydra; Metasploit introduction; First box: Pickle Rick; Box: Basic Pentesting",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Network services 1 (SMB, Telnet, FTP)' out loud in 2 minutes as if to a friend.",
+   "day": 112,
+   "phase_name": "Phase 5 - Hands-On Learning"
+  },
+  {
+   "phase": "p5",
+   "title": "Box: Agent Sudo",
+   "tasks": [
+    "TryHackMe: 'Agent Sudo'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Agent Sudo",
+     "url": "https://tryhackme.com/room/agentsudoctf"
+    }
+   ],
+   "tools": [
+    "hydra",
+    "steghide",
+    "binwalk"
+   ],
+   "challenge": "Root the box.",
+   "day": 113,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Box: Blue (Windows)",
+   "tasks": [
+    "TryHackMe: 'Blue' (EternalBlue / MS17-010)"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Blue",
+     "url": "https://tryhackme.com/room/blue"
+    }
+   ],
+   "tools": [
+    "nmap",
+    "Metasploit"
+   ],
+   "challenge": "Root the box and read about the WannaCry outbreak that used the same bug.",
+   "day": 114,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Linux privilege escalation basics",
+   "tasks": [
+    "TryHackMe: 'Linux PrivEsc'",
+    "Learn sudo -l, SUID binaries, cron, writable files"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Linux PrivEsc",
+     "url": "https://tryhackme.com/room/linprivesc"
+    },
+    {
+     "name": "GTFOBins",
+     "url": "https://gtfobins.github.io"
+    }
+   ],
+   "tools": [
+    "`find / -perm -4000 2>/dev/null`",
+    "GTFOBins"
+   ],
+   "challenge": "Complete the first 5 tasks and explain SUID abuse in your own words.",
+   "day": 115,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Boxes: Bounty Hacker + Brooklyn Nine Nine",
+   "tasks": [
+    "TryHackMe: 'Bounty Hacker' (cowboyhacker) and 'Brooklyn Nine Nine'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Bounty Hacker",
+     "url": "https://tryhackme.com/room/cowboyhacker"
+    },
+    {
+     "name": "TryHackMe: Brooklyn Nine Nine",
+     "url": "https://tryhackme.com/room/brooklynninenine"
+    }
+   ],
+   "tools": [
+    "nmap",
+    "hydra",
+    "GTFOBins"
+   ],
+   "challenge": "Root both boxes.",
+   "day": 116,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p5",
+   "title": "Hacker101 CTF",
+   "tasks": [
+    "Watch the first Hacker101 video lesson",
+    "Start the Hacker101 CTF"
+   ],
+   "links": [
+    {
+     "name": "Hacker101",
+     "url": "https://www.hacker101.com"
+    },
+    {
+     "name": "Hacker101 CTF",
+     "url": "https://ctf.hacker101.com"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Capture 2 flags in Hacker101 CTF.",
+   "day": 117,
+   "phase_name": "Phase 5 - Hands-On Learning",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "What is a CTF? Categories tour",
+   "tasks": [
+    "Read the Phase 6 section of the roadmap",
+    "Skim CTF101.org categories"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "CTF101.org",
+     "url": "https://ctf101.org"
+    },
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    }
+   ],
+   "tools": [],
+   "challenge": "Solve 3 picoGym 'General Skills' challenges.",
+   "day": 118,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Week 17 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Box: Agent Sudo; Box: Blue (Windows); Linux privilege escalation basics; Boxes: Bounty Hacker + Brooklyn Nine Nine; Hacker101 CTF; What is a CTF? Categories tour",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Box: Agent Sudo' out loud in 2 minutes as if to a friend.",
+   "day": 119,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression"
+  },
+  {
+   "phase": "p6",
+   "title": "picoGym General Skills",
+   "tasks": [
+    "Filter picoGym by General Skills, easiest first"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    }
+   ],
+   "tools": [
+    "Linux terminal",
+    "Python"
+   ],
+   "challenge": "Solve 5 General Skills challenges.",
+   "day": 120,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Crypto 1: classical ciphers",
+   "tasks": [
+    "CTF101: Classic ciphers (Caesar, Vigenere, substitution)",
+    "Try dcode.fr for cipher identification"
+   ],
+   "links": [
+    {
+     "name": "CTF101.org",
+     "url": "https://ctf101.org"
+    },
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    },
+    {
+     "name": "dCode",
+     "url": "https://www.dcode.fr/en"
+    }
+   ],
+   "tools": [
+    "CyberChef",
+    "dCode"
+   ],
+   "challenge": "Solve 3 easy picoGym Cryptography challenges.",
+   "day": 121,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Crypto 2: encoding & XOR",
+   "tasks": [
+    "CryptoHack: 'Introduction' + 'General' (Encoding, XOR)"
+   ],
+   "links": [
+    {
+     "name": "CryptoHack",
+     "url": "https://cryptohack.org"
+    }
+   ],
+   "tools": [
+    "Python",
+    "pwntools (`pip install pwntools`)"
+   ],
+   "challenge": "Finish CryptoHack General -> Encoding and XOR sections.",
+   "day": 122,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Crypto 3: RSA concepts",
+   "tasks": [
+    "CryptoHack: RSA Starter 1-6",
+    "Learn n, e, d, phi - and why small e / shared primes break RSA"
+   ],
+   "links": [
+    {
+     "name": "CryptoHack",
+     "url": "https://cryptohack.org"
+    }
+   ],
+   "tools": [
+    "Python"
+   ],
+   "challenge": "Finish RSA Starter 1-6.",
+   "day": 123,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Web exploitation CTFs 1",
+   "tasks": [
+    "picoGym: Web Exploitation, easiest first",
+    "Always check: page source, cookies, robots.txt, headers"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    }
+   ],
+   "tools": [
+    "DevTools",
+    "Burp Suite",
+    "curl"
+   ],
+   "challenge": "Solve 4 Web Exploitation challenges.",
+   "day": 124,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Web exploitation CTFs 2",
+   "tasks": [
+    "Continue picoGym Web; try TryHackMe 'Juicy Details' for log analysis of a web attack"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    },
+    {
+     "name": "TryHackMe: Juicy Details",
+     "url": "https://tryhackme.com/room/juicydetails"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Solve 3 more Web challenges.",
+   "day": 125,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Week 18 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: picoGym General Skills; Crypto 1: classical ciphers; Crypto 2: encoding & XOR; Crypto 3: RSA concepts; Web exploitation CTFs 1; Web exploitation CTFs 2",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'picoGym General Skills' out loud in 2 minutes as if to a friend.",
+   "day": 126,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression"
+  },
+  {
+   "phase": "p6",
+   "title": "Forensics 1: files & metadata",
+   "tasks": [
+    "Learn file signatures (magic bytes), metadata, carving",
+    "picoGym: Forensics easy"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    },
+    {
+     "name": "File signatures list",
+     "url": "https://en.wikipedia.org/wiki/List_of_file_signatures"
+    }
+   ],
+   "tools": [
+    "file",
+    "exiftool",
+    "binwalk",
+    "xxd"
+   ],
+   "challenge": "Solve 3 Forensics challenges.",
+   "day": 127,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Forensics 2: PCAP analysis",
+   "tasks": [
+    "Wireshark: Follow TCP stream, Export Objects, Statistics -> Conversations"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    },
+    {
+     "name": "Wireshark download",
+     "url": "https://www.wireshark.org/download.html"
+    }
+   ],
+   "tools": [
+    "Wireshark",
+    "tshark"
+   ],
+   "challenge": "Solve 2 PCAP-based challenges on picoGym.",
+   "day": 128,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Steganography & encodings",
+   "tasks": [
+    "TryHackMe: 'c4ptur3-th3-fl4g'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: c4ptur3-th3-fl4g",
+     "url": "https://tryhackme.com/room/c4ptur3th3fl4g"
+    }
+   ],
+   "tools": [
+    "steghide",
+    "zsteg",
+    "exiftool",
+    "Audacity/Sonic Visualiser"
+   ],
+   "challenge": "Finish the room.",
+   "day": 129,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "OSINT 1",
+   "tasks": [
+    "TryHackMe: 'OhSINT'",
+    "Learn Google dorking operators: site:, filetype:, inurl:"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: OhSINT",
+     "url": "https://tryhackme.com/room/ohsint"
+    },
+    {
+     "name": "Google Hacking Database",
+     "url": "https://www.exploit-db.com/google-hacking-database"
+    }
+   ],
+   "tools": [
+    "exiftool",
+    "Reverse image search"
+   ],
+   "challenge": "Finish OhSINT.",
+   "day": 130,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "OSINT 2: search skills",
+   "tasks": [
+    "TryHackMe: 'Search Skills'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Search Skills",
+     "url": "https://tryhackme.com/room/searchskills"
+    },
+    {
+     "name": "Shodan",
+     "url": "https://www.shodan.io"
+    }
+   ],
+   "tools": [
+    "Shodan",
+    "Google dorks"
+   ],
+   "challenge": "Finish the room. Write your 5 favourite dorks in your notes.",
+   "day": 131,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Reverse engineering 1",
+   "tasks": [
+    "Learn static analysis basics: strings, file, ltrace/strace",
+    "picoGym: Reverse Engineering easy"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    },
+    {
+     "name": "Ghidra",
+     "url": "https://ghidra-sre.org"
+    }
+   ],
+   "tools": [
+    "strings",
+    "ltrace",
+    "Ghidra"
+   ],
+   "challenge": "Solve 3 Reverse Engineering challenges.",
+   "day": 132,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Week 19 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Forensics 1: files & metadata; Forensics 2: PCAP analysis; Steganography & encodings; OSINT 1; OSINT 2: search skills; Reverse engineering 1",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Forensics 1: files & metadata' out loud in 2 minutes as if to a friend.",
+   "day": 133,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression"
+  },
+  {
+   "phase": "p6",
+   "title": "Reverse engineering 2: Ghidra",
+   "tasks": [
+    "Install Ghidra; learn the decompiler view",
+    "Try a level-1 crackme from crackmes.one"
+   ],
+   "links": [
+    {
+     "name": "Ghidra",
+     "url": "https://ghidra-sre.org"
+    },
+    {
+     "name": "crackmes.one",
+     "url": "https://crackmes.one"
+    }
+   ],
+   "tools": [
+    "Ghidra"
+   ],
+   "challenge": "Solve one difficulty-1 crackme and document it.",
+   "day": 134,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Binary exploitation 1: buffer overflows",
+   "tasks": [
+    "Watch LiveOverflow's binary exploitation intro videos",
+    "Start pwn.college 'Getting Started'"
+   ],
+   "links": [
+    {
+     "name": "LiveOverflow",
+     "url": "https://www.youtube.com/@LiveOverflow"
+    },
+    {
+     "name": "pwn.college",
+     "url": "https://pwn.college"
+    }
+   ],
+   "tools": [
+    "gdb",
+    "pwntools"
+   ],
+   "challenge": "Explain the stack, return address and why overflowing a buffer can change control flow.",
+   "day": 135,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "Binary exploitation 2",
+   "tasks": [
+    "picoGym: 'buffer overflow 0' and 'buffer overflow 1'"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    }
+   ],
+   "tools": [
+    "gdb",
+    "pwntools",
+    "checksec"
+   ],
+   "challenge": "Solve buffer overflow 0 (and 1 if you can).",
+   "day": 136,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p6",
+   "title": "CTF Collection Vol. 1",
+   "tasks": [
+    "TryHackMe: 'CTF Collection Vol. 1' - mixed categories"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: CTF Collection Vol. 1",
+     "url": "https://tryhackme.com/room/ctfcollectionvol1"
+    }
+   ],
+   "tools": [
+    "CyberChef",
+    "exiftool",
+    "steghide"
+   ],
+   "challenge": "Solve at least 10 tasks.",
+   "day": 137,
+   "phase_name": "Phase 6/7 - CTFs & CTF Progression",
+   "review": false
+  },
+  {
+   "phase": "p8",
+   "title": "Reading write-ups the right way",
+   "tasks": [
+    "Read Phase 8 of the roadmap - the 7-step method",
+    "Pick a challenge you failed; read only enough of a write-up to get unstuck"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "CTFtime write-ups",
+     "url": "https://ctftime.org/writeups"
+    },
+    {
+     "name": "0xdf's blog",
+     "url": "https://0xdf.gitlab.io"
+    }
+   ],
+   "tools": [],
+   "challenge": "Finish that failed challenge, then reproduce the full solution from scratch without the write-up.",
+   "day": 138,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions",
+   "review": false
+  },
+  {
+   "phase": "p8",
+   "title": "Write your first write-up",
+   "tasks": [
+    "Use the roadmap template: description, analysis, approach, tools, steps, what failed, key learning",
+    "Never publish write-ups for a live competition"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "awesome-ctf",
+     "url": "https://github.com/apsdehal/awesome-ctf"
+    }
+   ],
+   "tools": [
+    "Markdown",
+    "GitHub"
+   ],
+   "challenge": "Publish a write-up of your favourite solved challenge to GitHub.",
+   "day": 139,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions",
+   "review": false
+  },
+  {
+   "phase": "p8",
+   "title": "Week 20 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Reverse engineering 2: Ghidra; Binary exploitation 1: buffer overflows; Binary exploitation 2; CTF Collection Vol. 1; Reading write-ups the right way; Write your first write-up",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Reverse engineering 2: Ghidra' out loud in 2 minutes as if to a friend.",
+   "day": 140,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions"
+  },
+  {
+   "phase": "p8",
+   "title": "Find a competition on CTFtime",
+   "tasks": [
+    "Browse upcoming events on CTFtime, prefer beginner/low-weight ones",
+    "Check for college CTFs and picoCTF dates"
+   ],
+   "links": [
+    {
+     "name": "CTFtime upcoming",
+     "url": "https://ctftime.org/event/list/upcoming"
+    },
+    {
+     "name": "CTFtime",
+     "url": "https://ctftime.org"
+    }
+   ],
+   "tools": [],
+   "challenge": "Register for one upcoming beginner CTF and put it in your calendar.",
+   "day": 141,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions",
+   "review": false
+  },
+  {
+   "phase": "p8",
+   "title": "Mock CTF: 3-hour timed session",
+   "tasks": [
+    "Set a 3-hour timer, pick 6 unsolved picoGym challenges across categories",
+    "Work like a real CTF: notes, time-box 30 min per challenge"
+   ],
+   "links": [
+    {
+     "name": "picoGym practice",
+     "url": "https://play.picoctf.org/practice"
+    }
+   ],
+   "tools": [
+    "Everything so far"
+   ],
+   "challenge": "Solve as many as you can; log time spent and where you got stuck.",
+   "day": 142,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions",
+   "review": false
+  },
+  {
+   "phase": "p8",
+   "title": "Join the community",
+   "tasks": [
+    "Find your local OWASP chapter",
+    "Join r/netsec, r/cybersecurity and one Discord (The Many Hats Club / InfoSec Prep)",
+    "Join or form a CTF team"
+   ],
+   "links": [
+    {
+     "name": "OWASP Chapters",
+     "url": "https://owasp.org/chapters/"
+    },
+    {
+     "name": "r/netsec",
+     "url": "https://www.reddit.com/r/netsec/"
+    },
+    {
+     "name": "The Many Hats Club",
+     "url": "https://discord.com/invite/tmhc"
+    }
+   ],
+   "tools": [
+    "Discord"
+   ],
+   "challenge": "Introduce yourself in one community and ask one good question about something you're stuck on.",
+   "day": 143,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions",
+   "review": false
+  },
+  {
+   "phase": "p8",
+   "title": "Learn from real bug reports",
+   "tasks": [
+    "Read 3 disclosed reports on HackerOne Hacktivity"
+   ],
+   "links": [
+    {
+     "name": "HackerOne Hacktivity",
+     "url": "https://hackerone.com/hacktivity"
+    }
+   ],
+   "tools": [],
+   "challenge": "Summarize one report: bug class, impact, how it was found, how it was fixed.",
+   "day": 144,
+   "phase_name": "Phase 8/9 - Write-ups, Community & Competitions",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Project: password strength checker v2",
+   "tasks": [
+    "Upgrade pwcheck.py: entropy estimate, HaveIBeenPwned k-anonymity check, unit tests",
+    "README: problem, approach, what you learned"
+   ],
+   "links": [
+    {
+     "name": "HIBP Pwned Passwords API",
+     "url": "https://haveibeenpwned.com/API/v3#PwnedPasswords"
+    },
+    {
+     "name": "Awesome README",
+     "url": "https://github.com/matiassingers/awesome-readme"
+    }
+   ],
+   "tools": [
+    "Python",
+    "pytest"
+   ],
+   "challenge": "Ship it on GitHub with tests and a screenshot in the README.",
+   "day": 145,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Project: file integrity monitor (part 1)",
+   "tasks": [
+    "Hash every file in a folder (sha256) and store a baseline JSON",
+    "Re-scan and report added / removed / modified files"
+   ],
+   "links": [
+    {
+     "name": "hashlib docs",
+     "url": "https://docs.python.org/3/library/hashlib.html"
+    }
+   ],
+   "tools": [
+    "Python"
+   ],
+   "challenge": "Modify a file and show your FIM detects it.",
+   "day": 146,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Week 21 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Find a competition on CTFtime; Mock CTF: 3-hour timed session; Join the community; Learn from real bug reports; Project: password strength checker v2; Project: file integrity monitor (part 1)",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Find a competition on CTFtime' out loud in 2 minutes as if to a friend.",
+   "day": 147,
+   "phase_name": "Phase 10 - Projects & Portfolio"
+  },
+  {
+   "phase": "p10",
+   "title": "Project: file integrity monitor (part 2)",
+   "tasks": [
+    "Schedule the FIM with cron",
+    "Send alerts to Telegram - reuse code from this very bot!"
+   ],
+   "links": [
+    {
+     "name": "Telegram Bot API",
+     "url": "https://core.telegram.org/bots/api"
+    }
+   ],
+   "tools": [
+    "cron",
+    "Telegram"
+   ],
+   "challenge": "Get a Telegram alert on your phone when a watched file changes.",
+   "day": 148,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Project: log analyzer",
+   "tasks": [
+    "Detect SSH brute force in auth.log: N failures from one IP within M minutes",
+    "Output a Markdown report"
+   ],
+   "links": [],
+   "tools": [
+    "Python",
+    "regex"
+   ],
+   "challenge": "Run it on your VM's logs after simulating a brute force with hydra against yourself.",
+   "day": 149,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Project: packet analyzer with Scapy",
+   "tasks": [
+    "Learn Scapy basics: sniff, layers, summary",
+    "Count packets per protocol and top talkers - only on your own network"
+   ],
+   "links": [
+    {
+     "name": "Scapy docs",
+     "url": "https://scapy.readthedocs.io"
+    }
+   ],
+   "tools": [
+    "Scapy",
+    "Wireshark"
+   ],
+   "challenge": "Print the top 5 destination IPs from 1 minute of your own traffic.",
+   "day": 150,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Project: encryption tool",
+   "tasks": [
+    "Use the `cryptography` library: Fernet / AES-GCM with a password-derived key (scrypt)"
+   ],
+   "links": [
+    {
+     "name": "cryptography docs",
+     "url": "https://cryptography.io"
+    }
+   ],
+   "tools": [
+    "Python"
+   ],
+   "challenge": "Encrypt and decrypt a file; explain in README why you used a KDF and a nonce.",
+   "day": 151,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "SOC home lab: plan & SIEM intro",
+   "tasks": [
+    "TryHackMe: 'Intro to SIEM'",
+    "Choose a free SIEM: Wazuh or Splunk Free",
+    "Plan: 1 SIEM VM + 1 Ubuntu victim + 1 attacker VM"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Intro to SIEM",
+     "url": "https://tryhackme.com/room/introtosiem"
+    },
+    {
+     "name": "Wazuh",
+     "url": "https://wazuh.com"
+    }
+   ],
+   "tools": [
+    "Wazuh / Splunk"
+   ],
+   "challenge": "Draw your lab diagram with IPs and what each VM does.",
+   "day": 152,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "SOC home lab: build",
+   "tasks": [
+    "Install the SIEM and an agent on your Ubuntu VM"
+   ],
+   "links": [
+    {
+     "name": "Wazuh docs",
+     "url": "https://documentation.wazuh.com"
+    }
+   ],
+   "tools": [
+    "Wazuh / Splunk"
+   ],
+   "challenge": "See your Ubuntu VM's logs arriving in the SIEM dashboard.",
+   "day": 153,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Week 22 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Project: file integrity monitor (part 2); Project: log analyzer; Project: packet analyzer with Scapy; Project: encryption tool; SOC home lab: plan & SIEM intro; SOC home lab: build",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Project: file integrity monitor (part 2)' out loud in 2 minutes as if to a friend.",
+   "day": 154,
+   "phase_name": "Phase 10 - Projects & Portfolio"
+  },
+  {
+   "phase": "p10",
+   "title": "SOC home lab: detect an attack",
+   "tasks": [
+    "From the attacker VM, brute-force SSH on the victim (your own lab)",
+    "Find the alert in the SIEM and write a mini incident report"
+   ],
+   "links": [],
+   "tools": [
+    "hydra",
+    "Wazuh / Splunk"
+   ],
+   "challenge": "Write a 1-page incident report: timeline, indicators, response.",
+   "day": 155,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Project: honeypot",
+   "tasks": [
+    "Deploy Cowrie SSH honeypot in an isolated VM"
+   ],
+   "links": [
+    {
+     "name": "Cowrie",
+     "url": "https://github.com/cowrie/cowrie"
+    }
+   ],
+   "tools": [
+    "Cowrie",
+    "Docker"
+   ],
+   "challenge": "Log in to your honeypot yourself and find your commands in its logs.",
+   "day": 156,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p10",
+   "title": "Portfolio polish",
+   "tasks": [
+    "Create a GitHub profile README",
+    "Pin your best 6 repos; make sure each has a clear README"
+   ],
+   "links": [
+    {
+     "name": "Awesome README",
+     "url": "https://github.com/matiassingers/awesome-readme"
+    }
+   ],
+   "tools": [
+    "GitHub"
+   ],
+   "challenge": "Ask a friend to read your profile for 2 minutes - can they tell what you can do?",
+   "day": 157,
+   "phase_name": "Phase 10 - Projects & Portfolio",
+   "review": false
+  },
+  {
+   "phase": "p11",
+   "title": "Certification landscape",
+   "tasks": [
+    "Read Phase 11 of the roadmap: learn -> practice -> validate",
+    "Explore Paul Jerimy's certification roadmap"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "Paul Jerimy's Certification Roadmap",
+     "url": "https://pauljerimy.com/security-certification-roadmap/"
+    }
+   ],
+   "tools": [],
+   "challenge": "Pick the ONE cert that fits your goals best (ISC2 CC, Security+, eJPT, BTL1...) and write why.",
+   "day": 158,
+   "phase_name": "Phase 11 - Certifications",
+   "review": false
+  },
+  {
+   "phase": "p11",
+   "title": "Cert study plan",
+   "tasks": [
+    "Break your chosen cert's exam objectives into weekly blocks",
+    "Book a realistic exam date"
+   ],
+   "links": [
+    {
+     "name": "ISC2 CC",
+     "url": "https://www.isc2.org/certifications/cc"
+    },
+    {
+     "name": "CompTIA Security+",
+     "url": "https://www.comptia.org/certifications/security"
+    },
+    {
+     "name": "eJPT",
+     "url": "https://ine.com/learning/certifications/junior-penetration-tester"
+    }
+   ],
+   "tools": [],
+   "challenge": "Commit your study plan to cybersec-notes.",
+   "day": 159,
+   "phase_name": "Phase 11 - Certifications",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Blue team 1: SOC analyst taste",
+   "tasks": [
+    "Create a LetsDefend free account and do an intro alert",
+    "TryHackMe: 'Pyramid of Pain'"
+   ],
+   "links": [
+    {
+     "name": "LetsDefend",
+     "url": "https://letsdefend.io"
+    },
+    {
+     "name": "TryHackMe: Pyramid of Pain",
+     "url": "https://tryhackme.com/room/pyramidofpainax"
+    }
+   ],
+   "tools": [
+    "SIEM"
+   ],
+   "challenge": "Triage one alert end to end: true or false positive? Why?",
+   "day": 160,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Week 23 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: SOC home lab: detect an attack; Project: honeypot; Portfolio polish; Certification landscape; Cert study plan; Blue team 1: SOC analyst taste",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'SOC home lab: detect an attack' out loud in 2 minutes as if to a friend.",
+   "day": 161,
+   "phase_name": "Phase 12 - Specialization Sampler"
+  },
+  {
+   "phase": "p12",
+   "title": "Blue team 2: Windows logging",
+   "tasks": [
+    "TryHackMe: 'Windows Logging for SOC'",
+    "Learn Sysmon basics"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Windows Logging for SOC",
+     "url": "https://tryhackme.com/room/windowsloggingforsoc"
+    }
+   ],
+   "tools": [
+    "Event Viewer",
+    "Sysmon"
+   ],
+   "challenge": "List 5 Windows Event IDs every SOC analyst should know and what they mean.",
+   "day": 162,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "DFIR 1: intro",
+   "tasks": [
+    "TryHackMe: 'Intro to Digital Forensics' and 'Intro to DFIR'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Intro to Digital Forensics",
+     "url": "https://tryhackme.com/room/introdigitalforensics"
+    },
+    {
+     "name": "TryHackMe: Intro to DFIR",
+     "url": "https://tryhackme.com/room/introductoryroomdfirmodule"
+    }
+   ],
+   "tools": [],
+   "challenge": "Explain chain of custody and order of volatility.",
+   "day": 163,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "DFIR 2: Autopsy",
+   "tasks": [
+    "TryHackMe: 'Autopsy'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Autopsy",
+     "url": "https://tryhackme.com/room/autopsy2ze0"
+    }
+   ],
+   "tools": [
+    "Autopsy"
+   ],
+   "challenge": "Finish the room.",
+   "day": 164,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "DFIR 3: memory forensics",
+   "tasks": [
+    "TryHackMe: 'Memory Forensics'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Memory Forensics",
+     "url": "https://tryhackme.com/room/memoryforensics"
+    },
+    {
+     "name": "Volatility 3",
+     "url": "https://github.com/volatilityfoundation/volatility3"
+    }
+   ],
+   "tools": [
+    "Volatility"
+   ],
+   "challenge": "Finish the room and list the Volatility plugins you used.",
+   "day": 165,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Malware analysis 1",
+   "tasks": [
+    "TryHackMe: 'History of Malware' and 'Malware Classification'",
+    "Look at a public Any.Run report (do NOT download samples on your host)"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: History of Malware",
+     "url": "https://tryhackme.com/room/historyofmalware"
+    },
+    {
+     "name": "TryHackMe: Malware Classification",
+     "url": "https://tryhackme.com/room/malwareclassification"
+    },
+    {
+     "name": "Any.Run",
+     "url": "https://any.run"
+    }
+   ],
+   "tools": [
+    "Any.Run"
+   ],
+   "challenge": "From one public Any.Run report, list 3 IOCs (hash, domain, IP).",
+   "day": 166,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Malware analysis 2",
+   "tasks": [
+    "TryHackMe: 'MalMal: Introductory'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: MalMal: Introductory",
+     "url": "https://tryhackme.com/room/malmalintroductory"
+    }
+   ],
+   "tools": [
+    "PEStudio",
+    "strings"
+   ],
+   "challenge": "Finish the room.",
+   "day": 167,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Week 24 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Blue team 2: Windows logging; DFIR 1: intro; DFIR 2: Autopsy; DFIR 3: memory forensics; Malware analysis 1; Malware analysis 2",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Blue team 2: Windows logging' out loud in 2 minutes as if to a friend.",
+   "day": 168,
+   "phase_name": "Phase 12 - Specialization Sampler"
+  },
+  {
+   "phase": "p12",
+   "title": "Reverse engineering track",
+   "tasks": [
+    "TryHackMe: 'x86-64 Architecture'",
+    "Start Malware Unicorn RE101"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: x86-64 Architecture",
+     "url": "https://tryhackme.com/room/x8664arch"
+    },
+    {
+     "name": "Malware Unicorn workshops",
+     "url": "https://malwareunicorn.org/#/workshops"
+    }
+   ],
+   "tools": [
+    "Ghidra",
+    "x64dbg"
+   ],
+   "challenge": "Explain registers RIP, RSP, RBP and what `call` / `ret` do.",
+   "day": 169,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Active Directory 1",
+   "tasks": [
+    "TryHackMe: 'Introduction to Active Directory Authentication' and 'AD Basics: Enumeration'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Intro to AD Authentication",
+     "url": "https://tryhackme.com/room/introtoactivedirectoryauthentication"
+    },
+    {
+     "name": "TryHackMe: AD Basics: Enumeration",
+     "url": "https://tryhackme.com/room/adbasicenumeration"
+    }
+   ],
+   "tools": [
+    "BloodHound",
+    "PowerView"
+   ],
+   "challenge": "Explain Kerberos TGT vs TGS in your own words.",
+   "day": 170,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Active Directory 2",
+   "tasks": [
+    "TryHackMe: 'Attacktive Directory'"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Attacktive Directory",
+     "url": "https://tryhackme.com/room/attacktivedirectory"
+    }
+   ],
+   "tools": [
+    "impacket",
+    "kerbrute"
+   ],
+   "challenge": "Finish the room.",
+   "day": 171,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Cloud security",
+   "tasks": [
+    "AWS Skill Builder: Cloud Practitioner Essentials (start)",
+    "Play flaws.cloud - a free AWS misconfiguration CTF"
+   ],
+   "links": [
+    {
+     "name": "AWS Skill Builder",
+     "url": "https://skillbuilder.aws"
+    },
+    {
+     "name": "flaws.cloud",
+     "url": "http://flaws.cloud"
+    }
+   ],
+   "tools": [
+    "AWS CLI"
+   ],
+   "challenge": "Solve flaws.cloud levels 1-3.",
+   "day": 172,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Threat intelligence & MITRE ATT&CK",
+   "tasks": [
+    "TryHackMe: 'Intro to Cyber Threat Intel'",
+    "Explore MITRE ATT&CK"
+   ],
+   "links": [
+    {
+     "name": "TryHackMe: Intro to Cyber Threat Intel",
+     "url": "https://tryhackme.com/room/cyberthreatintel"
+    },
+    {
+     "name": "MITRE ATT&CK",
+     "url": "https://attack.mitre.org"
+    }
+   ],
+   "tools": [
+    "ATT&CK Navigator"
+   ],
+   "challenge": "Pick one threat group on ATT&CK and list 5 of its techniques.",
+   "day": 173,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "GRC: risk assessment",
+   "tasks": [
+    "Re-read NIST CSF 2.0",
+    "Learn risk = likelihood x impact; risk register"
+   ],
+   "links": [
+    {
+     "name": "NIST CSF",
+     "url": "https://www.nist.gov/cyberframework"
+    }
+   ],
+   "tools": [
+    "Spreadsheet"
+   ],
+   "challenge": "Write a mock risk register (5 risks) for a small college club website.",
+   "day": 174,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p12",
+   "title": "Week 25 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Reverse engineering track; Active Directory 1; Active Directory 2; Cloud security; Threat intelligence & MITRE ATT&CK; GRC: risk assessment",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Reverse engineering track' out loud in 2 minutes as if to a friend.",
+   "day": 175,
+   "phase_name": "Phase 12 - Specialization Sampler"
+  },
+  {
+   "phase": "p12",
+   "title": "Choose your specialization",
+   "tasks": [
+    "Re-read Phase 12 of the roadmap",
+    "Score every domain you tried: enjoyment / skill / job market (1-5)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [],
+   "challenge": "Pick your top specialization and write a 3-month plan for it.",
+   "day": 176,
+   "phase_name": "Phase 12 - Specialization Sampler",
+   "review": false
+  },
+  {
+   "phase": "p13",
+   "title": "LinkedIn & resume",
+   "tasks": [
+    "Write a security-focused resume: projects, CTFs, write-ups first",
+    "Update LinkedIn headline + featured section"
+   ],
+   "links": [
+    {
+     "name": "LinkedIn Learning",
+     "url": "https://www.linkedin.com/learning/"
+    }
+   ],
+   "tools": [],
+   "challenge": "Get feedback on your resume from one senior in your community.",
+   "day": 177,
+   "phase_name": "Phase 13 - Career Development",
+   "review": false
+  },
+  {
+   "phase": "p13",
+   "title": "Write a blog post",
+   "tasks": [
+    "Write about something you learned (not just a CTF write-up)",
+    "Publish on GitHub Pages / Medium / Hashnode"
+   ],
+   "links": [],
+   "tools": [
+    "Markdown"
+   ],
+   "challenge": "Publish and share it in one community.",
+   "day": 178,
+   "phase_name": "Phase 13 - Career Development",
+   "review": false
+  },
+  {
+   "phase": "p13",
+   "title": "Open-source contribution",
+   "tasks": [
+    "Find a 'good first issue' in an OWASP project",
+    "Even docs fixes count"
+   ],
+   "links": [
+    {
+     "name": "OWASP Projects",
+     "url": "https://owasp.org/projects/"
+    },
+    {
+     "name": "OWASP on GitHub",
+     "url": "https://github.com/OWASP"
+    }
+   ],
+   "tools": [
+    "git",
+    "GitHub"
+   ],
+   "challenge": "Open your first pull request to a security project.",
+   "day": 179,
+   "phase_name": "Phase 13 - Career Development",
+   "review": false
+  },
+  {
+   "phase": "p13",
+   "title": "Bug bounty readiness",
+   "tasks": [
+    "Bugcrowd University basics",
+    "Read 2 program policies: scope, out-of-scope, safe harbor",
+    "Only start hunting once your AppSec basics are solid"
+   ],
+   "links": [
+    {
+     "name": "Bugcrowd University",
+     "url": "https://www.bugcrowd.com/hackers/bugcrowd-university/"
+    },
+    {
+     "name": "HackerOne Hacktivity",
+     "url": "https://hackerone.com/hacktivity"
+    }
+   ],
+   "tools": [
+    "Burp Suite"
+   ],
+   "challenge": "Summarize what is in and out of scope for one program.",
+   "day": 180,
+   "phase_name": "Phase 13 - Career Development",
+   "review": false
+  },
+  {
+   "phase": "p13",
+   "title": "Graduation: internships & your next 90 days",
+   "tasks": [
+    "List 10 internships / roles to apply to",
+    "Write your 90-day plan for your chosen specialization",
+    "Celebrate - you finished the roadmap!"
+   ],
+   "links": [
+    {
+     "name": "The roadmap (ROADMAP.md)",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    },
+    {
+     "name": "levels.fyi",
+     "url": "https://www.levels.fyi"
+    }
+   ],
+   "tools": [],
+   "challenge": "Apply to your first 3 internships today.",
+   "day": 181,
+   "phase_name": "Phase 13 - Career Development",
+   "review": false
+  },
+  {
+   "phase": "p13",
+   "title": "Week 26 review & write-up day",
+   "review": true,
+   "tasks": [
+    "Re-read your notes for this week: Choose your specialization; LinkedIn & resume; Write a blog post; Open-source contribution; Bug bounty readiness; Graduation: internships & your next 90 days",
+    "Redo the hardest exercise of the week without looking at your notes",
+    "Write a 'What I learned / What confused me' note and push it to cybersec-notes",
+    "Solve 2 bonus challenges (/challenge in the bot or on the dashboard)"
+   ],
+   "links": [
+    {
+     "name": "The roadmap",
+     "url": "https://github.com/owasppccoe/cybersecurity-roadmap/blob/main/ROADMAP.md"
+    }
+   ],
+   "tools": [
+    "GitHub",
+    "your notes"
+   ],
+   "challenge": "Teach-back: explain 'Choose your specialization' out loud in 2 minutes as if to a friend.",
+   "day": 182,
+   "phase_name": "Phase 13 - Career Development"
+  }
+ ]
+}

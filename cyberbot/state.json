@@ -1,0 +1,14 @@
+{
+ "best_streak": 0,
+ "chat_id": null,
+ "completed": {},
+ "current_day": 1,
+ "last_done_date": null,
+ "last_evening": null,
+ "last_morning": null,
+ "pending_challenge": null,
+ "skipped": [],
+ "solved": [],
+ "streak": 0,
+ "update_offset": 0
+}

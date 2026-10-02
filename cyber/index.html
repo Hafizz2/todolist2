@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CyberBuddy</title>
+    <meta name="description" content="Daily cybersecurity learning plan based on the OWASP PCCOE roadmap" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <h1>🛡️ CyberBuddy</h1>
+        <p class="sub">Your day-by-day cybersecurity roadmap · <a id="source" target="_blank" rel="noopener">source roadmap</a></p>
+      </div>
+      <div class="stats">
+        <div class="stat"><span id="stat-done">0</span><small>days done</small></div>
+        <div class="stat"><span id="stat-streak">0</span><small>🔥 streak</small></div>
+        <div class="stat"><span id="stat-solved">0</span><small>🧩 puzzles</small></div>
+      </div>
+    </header>
+
+    <div class="progress"><div id="progress-bar"></div></div>
+    <p class="progress-label" id="progress-label"></p>
+
+    <main>
+      <section class="card" id="lesson"></section>
+
+      <section class="card">
+        <h2>🧩 Bonus puzzle</h2>
+        <div id="puzzle"></div>
+        <form id="puzzle-form" class="row">
+          <input id="puzzle-answer" type="text" placeholder="Your answer" autocomplete="off" />
+          <button type="submit">Check</button>
+        </form>
+        <div class="row">
+          <button type="button" class="ghost" id="puzzle-hint">Hint</button>
+          <button type="button" class="ghost" id="puzzle-next">New puzzle</button>
+        </div>
+        <p id="puzzle-result" class="result" aria-live="polite"></p>
+      </section>
+
+      <section class="card">
+        <h2>🗺️ Full plan</h2>
+        <div id="phases"></div>
+      </section>
+    </main>
+
+    <footer>
+      Progress is saved in this browser and merged with your Telegram bot's progress (<code>cyberbot/state.json</code>).
+      <button type="button" class="link" id="reset">Reset browser progress</button>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

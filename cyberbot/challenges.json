@@ -1,0 +1,383 @@
+{
+ "challenges": [
+  {
+   "id": 1,
+   "category": "Encoding",
+   "difficulty": 1,
+   "prompt": "Decode this Base64: b3dhc3AgdG9wIDEw",
+   "hint": "Base64 strings often end in = and use A-Z a-z 0-9 + /",
+   "tool": "CyberChef: From Base64",
+   "answers": [
+    "46578a11815598c8689938f9c627615c3afaf4b2bb28df18fca04676d3f9211f"
+   ]
+  },
+  {
+   "id": 2,
+   "category": "Encoding",
+   "difficulty": 1,
+   "prompt": "Decode this hex: 6e6d6170",
+   "hint": "Two hex digits = one byte = one ASCII char",
+   "tool": "CyberChef: From Hex",
+   "answers": [
+    "5286b91aa11e48184da2c742f7f08492b8be0e02c01188b55b47d4be0e23fb18"
+   ]
+  },
+  {
+   "id": 3,
+   "category": "Encoding",
+   "difficulty": 1,
+   "prompt": "Decode this binary: 01110011 01110011 01101000",
+   "hint": "8 bits per character",
+   "tool": "CyberChef: From Binary",
+   "answers": [
+    "7f5a55cf3f88be936fb9440249cb449f3067ccee4b525d0027dc9278a29c32c1"
+   ]
+  },
+  {
+   "id": 4,
+   "category": "Crypto",
+   "difficulty": 1,
+   "prompt": "ROT13: jverfunex",
+   "hint": "Apply ROT13 again - it is its own inverse",
+   "tool": "`tr 'A-Za-z' 'N-ZA-Mn-za-m'`",
+   "answers": [
+    "28662759fcf7454b4388d4ff2798bf5c3c7dbe92090612b4214a411ea5d17cc8"
+   ]
+  },
+  {
+   "id": 5,
+   "category": "Crypto",
+   "difficulty": 1,
+   "prompt": "Caesar cipher (shift 3): sklvklqj",
+   "hint": "Shift every letter back by 3",
+   "tool": "dCode Caesar",
+   "answers": [
+    "2ce4ce947f548d483889bf6b6c4731ebd50a8f8e48fc7b84373c5cc4cf1d35b3"
+   ]
+  },
+  {
+   "id": 6,
+   "category": "Encoding",
+   "difficulty": 2,
+   "prompt": "Decode (it's layered): WW5WeWNITjFhWFJs",
+   "hint": "Decode Base64... then look again",
+   "tool": "CyberChef",
+   "answers": [
+    "97477fbca8e9ad6af448569538a2e30570cd0968a3a713bae61a7951ba87907f",
+    "82161f6e0ed508f8ffb1b9dc629fd28b176da380dc9684258d06da94eb4112e0"
+   ]
+  },
+  {
+   "id": 7,
+   "category": "Encoding",
+   "difficulty": 2,
+   "prompt": "Decode: dG9weWVub2g=",
+   "hint": "Base64 first, then read it backwards",
+   "tool": "CyberChef: From Base64 + Reverse",
+   "answers": [
+    "ac50e01690b1ed27763d092aa8c0bb74ea19e1d6177258aea950d9276858db3e"
+   ]
+  },
+  {
+   "id": 8,
+   "category": "Encoding",
+   "difficulty": 1,
+   "prompt": "URL-decode: %73%71%6c%69",
+   "hint": "%xx is a hex byte",
+   "tool": "CyberChef: URL Decode",
+   "answers": [
+    "41a91cc25ec5659c4b7457b2cee7537f9df2cde42195b0808343cd4e8bcce2f2"
+   ]
+  },
+  {
+   "id": 9,
+   "category": "Crypto",
+   "difficulty": 2,
+   "prompt": "Crack this MD5 (it's in every wordlist): 5f4dcc3b5aa765d61d8327deb882cf99",
+   "hint": "Try CrackStation or the top of rockyou.txt",
+   "tool": "CrackStation / hashcat -m 0",
+   "answers": [
+    "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8"
+   ]
+  },
+  {
+   "id": 10,
+   "category": "Crypto",
+   "difficulty": 2,
+   "prompt": "Crack this SHA-1: 7c4a8d09ca3762af61e59520943dc26494f8941b",
+   "hint": "The most common password in the world",
+   "tool": "CrackStation / hashcat -m 100",
+   "answers": [
+    "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92"
+   ]
+  },
+  {
+   "id": 11,
+   "category": "Crypto",
+   "difficulty": 2,
+   "prompt": "Morse code: .--. .-- -.",
+   "hint": "Three letters, CTF slang for 'own'",
+   "tool": "dCode Morse",
+   "answers": [
+    "e0af3d118bcd6f56105b722639793e20212f5d24abc099286625fc72a24f3c9b"
+   ]
+  },
+  {
+   "id": 12,
+   "category": "Crypto",
+   "difficulty": 2,
+   "prompt": "XOR 0x5A with 0x3C. Answer in hex (e.g. 1f).",
+   "hint": "Convert to binary and XOR bit by bit",
+   "tool": "Python: hex(0x5a ^ 0x3c)",
+   "answers": [
+    "3ada92f28b4ceda38562ebf047c6ff05400d4c572352a1142eedfef67d21e662",
+    "409eec787e451a32cc503ca4032b0189c4faa9669f7a7bfc0c53a8eff652f241"
+   ]
+  },
+  {
+   "id": 13,
+   "category": "Web",
+   "difficulty": 2,
+   "prompt": "This JWT payload segment is base64url. What role does it claim? eyJ1c2VyIjogImd1ZXN0IiwgInJvbGUiOiAiYWRtaW4ifQ",
+   "hint": "Decode it like Base64 (add = padding if needed)",
+   "tool": "jwt.io / CyberChef",
+   "answers": [
+    "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+   ]
+  },
+  {
+   "id": 14,
+   "category": "Networking",
+   "difficulty": 1,
+   "prompt": "How many usable host addresses are in a /27 network?",
+   "hint": "2^(32-27) minus network and broadcast",
+   "tool": "Subnet calculator",
+   "answers": [
+    "624b60c58c9d8bfb6ff1886c2fd605d2adeb6ea4da576068201b6c6958ce93f4"
+   ]
+  },
+  {
+   "id": 15,
+   "category": "Networking",
+   "difficulty": 2,
+   "prompt": "What is the broadcast address of 10.0.0.0/29?",
+   "hint": "/29 = 8 addresses",
+   "tool": "Subnet calculator",
+   "answers": [
+    "130e4daba9786013f48dc2fccf39f91a0b3ec2cfba74ff0b645acf95229df69e"
+   ]
+  },
+  {
+   "id": 16,
+   "category": "Networking",
+   "difficulty": 2,
+   "prompt": "How many /24 networks fit inside one /20?",
+   "hint": "2^(24-20)",
+   "tool": "",
+   "answers": [
+    "b17ef6d19c7a5b1ee83b907c595526dcb1eb06db8227d650d5dda0a9f4ce8cd9"
+   ]
+  },
+  {
+   "id": 17,
+   "category": "Networking",
+   "difficulty": 1,
+   "prompt": "Default TCP port for SSH?",
+   "hint": "Bandit uses 2220, but the default is lower",
+   "tool": "",
+   "answers": [
+    "785f3ec7eb32f30b90cd0fcf3657d388b5ff4297f2f9716ff66e9b69c05ddd09"
+   ]
+  },
+  {
+   "id": 18,
+   "category": "Networking",
+   "difficulty": 1,
+   "prompt": "Default TCP port for RDP?",
+   "hint": "Four digits, starts with 33",
+   "tool": "",
+   "answers": [
+    "cb2dca9d3912259d6f5d8282a67fe80f783d182a25978bfc42d32fc6e660d130"
+   ]
+  },
+  {
+   "id": 19,
+   "category": "Networking",
+   "difficulty": 1,
+   "prompt": "Default TCP port for SMB (direct over TCP)?",
+   "hint": "EternalBlue attacked this port",
+   "tool": "",
+   "answers": [
+    "0e12831a7047f759733b21f028525039607350b1b1b4fe904595427e72ea0d9b"
+   ]
+  },
+  {
+   "id": 20,
+   "category": "Networking",
+   "difficulty": 1,
+   "prompt": "Which DNS record type maps a name to an IPv6 address?",
+   "hint": "IPv4 uses A. IPv6 is four times bigger...",
+   "tool": "dig",
+   "answers": [
+    "61be55a8e2f6b4e172338bddf184d6dbee29c98853e0a0485ecee7f27b9af0b4"
+   ]
+  },
+  {
+   "id": 21,
+   "category": "Networking",
+   "difficulty": 1,
+   "prompt": "TCP handshake: SYN, SYN-ACK, then what?",
+   "hint": "The final acknowledgement",
+   "tool": "Wireshark",
+   "answers": [
+    "64a37929fb113e18daa6263a1fb1f90c51d262552efa5a50596f5f653ba955f8"
+   ]
+  },
+  {
+   "id": 22,
+   "category": "Web",
+   "difficulty": 1,
+   "prompt": "HTTP status code for 'Forbidden'?",
+   "hint": "4xx = client error; 404 is Not Found",
+   "tool": "curl -I",
+   "answers": [
+    "d26eae87829adde551bf4b852f9da6b8c3c2db9b65b8b68870632a2db5f53e00"
+   ]
+  },
+  {
+   "id": 23,
+   "category": "Web",
+   "difficulty": 1,
+   "prompt": "Which response header tells browsers to only ever use HTTPS for a site?",
+   "hint": "Abbreviated HSTS",
+   "tool": "DevTools",
+   "answers": [
+    "2a908071ec4564a5aebe6988c1bd0e6c1c47ceb051c2fd0ed68ab08e6ce9f984",
+    "6e6876b3a9522864aeebb998ad7bd809fc18c01653c16d1ec70bbb80a8c830da"
+   ]
+  },
+  {
+   "id": 24,
+   "category": "Web",
+   "difficulty": 1,
+   "prompt": "Which cookie flag stops JavaScript from reading the cookie?",
+   "hint": "It's about HTTP only...",
+   "tool": "DevTools -> Application",
+   "answers": [
+    "33d8ce420e65b03cd89a4de87decd82e0c0358e10e96a31738ee16f0c41059b6"
+   ]
+  },
+  {
+   "id": 25,
+   "category": "Web",
+   "difficulty": 2,
+   "prompt": "OWASP Top 10 (2021) category #1?",
+   "hint": "IDOR falls under it",
+   "tool": "owasp.org/Top10",
+   "answers": [
+    "b2d4259e1ab2ca23b9391903d71553a9d7d1acd956067937b3996ac95d12f1ba",
+    "b2601d41d326f0cf1100ab182f83d08ee89d66900f40f08e21ac6fc0f99417ce"
+   ]
+  },
+  {
+   "id": 26,
+   "category": "Linux",
+   "difficulty": 1,
+   "prompt": "Octal chmod value for rwxr-x--- ?",
+   "hint": "r=4 w=2 x=1, per user/group/other",
+   "tool": "chmod",
+   "answers": [
+    "64d095f2fecfdeb907dae5403b10966c4ae755b7598aa078cb932e345bd0b5d0"
+   ]
+  },
+  {
+   "id": 27,
+   "category": "Linux",
+   "difficulty": 1,
+   "prompt": "Which Linux file stores password hashes?",
+   "hint": "Not /etc/passwd",
+   "tool": "",
+   "answers": [
+    "7b5ddf499844cf05866927513cf62fee9af8c281812def040b964146b0ea87d6",
+    "0bb09d80600eec3eb9d7793a6f859bedde2a2d83899b70bd78e961ed674b32f4"
+   ]
+  },
+  {
+   "id": 28,
+   "category": "Linux",
+   "difficulty": 2,
+   "prompt": "Which nmap flag enables service/version detection?",
+   "hint": "Two letters after the dash: S + V",
+   "tool": "nmap --help",
+   "answers": [
+    "1af832b1983fe2d07b0e452da1233b5ef3396582abe43116e3ac3085360fec01"
+   ]
+  },
+  {
+   "id": 29,
+   "category": "Windows",
+   "difficulty": 2,
+   "prompt": "Windows Security Event ID for a FAILED logon?",
+   "hint": "Successful logon is 4624",
+   "tool": "Event Viewer",
+   "answers": [
+    "d65112fe4b7673c7e4677845ab91b4a6686e4543ea7b1c2420f89481f7d1b965"
+   ]
+  },
+  {
+   "id": 30,
+   "category": "Concepts",
+   "difficulty": 1,
+   "prompt": "Ransomware encrypting a hospital's files mostly attacks which CIA pillar?",
+   "hint": "Data still exists and isn't necessarily leaked - but can they use it?",
+   "tool": "",
+   "answers": [
+    "f95dac581e9b439c58abf51a6c8c091f8e0aac8c0fb06f0cbca10fc8ac361330"
+   ]
+  },
+  {
+   "id": 31,
+   "category": "Crypto",
+   "difficulty": 1,
+   "prompt": "How many hex characters long is a SHA-256 digest?",
+   "hint": "256 bits / 4 bits per hex char",
+   "tool": "sha256sum",
+   "answers": [
+    "a68b412c4282555f15546cf6e1fc42893b7e07f271557ceb021821098dd66c1b"
+   ]
+  },
+  {
+   "id": 32,
+   "category": "Encoding",
+   "difficulty": 1,
+   "prompt": "What is 0xFF in decimal?",
+   "hint": "Largest value of one byte",
+   "tool": "Python: int('ff',16)",
+   "answers": [
+    "9556b82499cc0aaf86aee7f0d253e17c61b7ef73d48a295f37d98f08b04ffa7f"
+   ]
+  },
+  {
+   "id": 33,
+   "category": "Concepts",
+   "difficulty": 2,
+   "prompt": "Base64 is: encoding, hashing, or encryption?",
+   "hint": "No key, fully reversible",
+   "tool": "",
+   "answers": [
+    "e8424ea5339b85a750ab5f4c63bde5d5c62975792a3bed6ccb37c045207c6771"
+   ]
+  },
+  {
+   "id": 34,
+   "category": "Crypto",
+   "difficulty": 3,
+   "prompt": "Vigenere with key 'owasp': qpfhaouej",
+   "hint": "Subtract the key letters (o=14, w=22, a=0, s=18, p=15) repeating",
+   "tool": "dCode Vigenere",
+   "answers": [
+    "1d37f485925c0f528aa7aff0c13e3074d9f6f5c40d979a03ba2a89291ced8b76"
+   ]
+  }
+ ]
+}
