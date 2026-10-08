@@ -27,6 +27,7 @@ users(id, telegram_id UNIQUE, name, lang, created_at)
 group_members(group_id, user_id, joined_at, hide_my_stats BOOL DEFAULT 0) — PK(group_id, user_id)
 goals(id, group_id, goal_key, label, type ENUM('counter','checkbox','quantity'), target INT, active BOOL) — UNIQUE(group_id, goal_key)
 entries(id, user_id, goal_key, entry_date DATE, amount INT, updated_at) — UNIQUE(user_id, goal_key, entry_date)
+group_posts(group_id, kind ENUM('morning','night'), post_date DATE, sent_at) — PK(group_id, kind, post_date); the scheduler's record of what it has posted
 
 Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the table `tg_groups`).
 
@@ -45,7 +46,8 @@ Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the
 - Morning job: posts today's challenge + Mini App button.
 - Night job: posts the summary according to privacy_mode.
 - Only the owner can edit goals or settings. Enforce this in PHP too.
-- Jobs: on startup and whenever group times change, (re)schedule per group. Simplest reliable approach: one job every minute that checks which groups are due in their own timezone.
+- Jobs: one APScheduler job every minute checks which groups are due in their own timezone (30 min grace for late ticks). It claims each post in `group_posts` before sending, so a post goes out once per local day; a failed send releases the claim and is retried, and a kicked bot deactivates the group. Times are read from the DB on every tick, so nothing needs rescheduling.
+- Group posts (morning, night) use the owner's language. Only groups that finished /setup and have active goals get posts.
 
 ## PHP Mini App
 - Load `https://telegram.org/js/telegram-web-app.js` and send `Telegram.WebApp.initData` with every API request.
@@ -53,6 +55,9 @@ Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the
 - Use PDO prepared statements only. Escape all output with `htmlspecialchars`.
 - Pages: My Day (checklist across all goal keys from all my groups), Zikr Counter (big tap button, `HapticFeedback`, saves in batches every few taps and on close), My Groups (each group's progress), Group Settings (owner only: goals, times, privacy).
 - Follow Telegram theme colors via `--tg-theme-*` CSS variables. Mobile-first.
+- Goals: owners add well-known presets (`GOAL_PRESETS` in `lib/groups.php`) or custom goals (key `custom_<random>`, so they don't share entries across groups). A goal's key and type never change; goals are switched off (`active = 0`), not deleted. Only custom goals' labels are editable, since presets are shown translated by key.
+- Group times: `morning_time` must be earlier than `night_time`, because the night summary covers the group's local day.
+- JS: `assets/core.js` (shared helpers, `window.ZC`), `assets/settings.js`, `assets/app.js` (My Day, counter, startup), loaded in that order.
 
 ## Build phases
 1. Repo structure, docker-compose, `001_init.sql`, bot /start, /setup, /join, group registration.
