@@ -8,7 +8,7 @@ import logging
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
-from aiogram.types import BotCommand
+from aiogram.types import BotCommand, MenuButtonWebApp, WebAppInfo
 
 from .config import load_settings
 from .db import create_pool
@@ -36,6 +36,12 @@ async def main() -> None:
             BotCommand(command="setup", description="Set up this group / ግሩፑን አዘጋጅ"),
             BotCommand(command="join", description="Join the challenge / ውድድሩን ተቀላቀል"),
         ]
+    )
+    # The menu button in private chats opens the Mini App directly.
+    await bot.set_chat_menu_button(
+        menu_button=MenuButtonWebApp(
+            text="Zikr Circle", web_app=WebAppInfo(url=settings.miniapp_url)
+        )
     )
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())

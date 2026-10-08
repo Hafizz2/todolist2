@@ -141,7 +141,7 @@ class Harness:
         self.pool = pool
         self.session = FakeSession(admins)
         self.bot = Bot("42:TEST", session=self.session)
-        settings = Settings("42:TEST", "", 0, DB_NAME, "", "", "https://app.test/miniapp/")
+        settings = Settings("42:TEST", "", 0, DB_NAME, "", "", "https://app.test/miniapp/", "app")
         self.dp = Dispatcher(repo=Repo(pool), settings=settings)
         self.dp.message.middleware(UserMiddleware())
         self.dp.callback_query.middleware(UserMiddleware())
@@ -184,7 +184,8 @@ def test_start_registers_user_and_switches_language():
         await h.feed(_message(_private(ALICE), ALICE, "/start"))
         assert await h.fetch("SELECT telegram_id, name, lang FROM users") == [(101, "Alice", "am")]
         markup = h.session.last().reply_markup
-        assert "startgroup" in markup.inline_keyboard[1][0].url
+        assert markup.inline_keyboard[1][0].url == "https://t.me/zikr_test_bot/app"
+        assert "startgroup" in markup.inline_keyboard[2][0].url
 
         callback = CallbackQuery(
             id="1",
@@ -217,16 +218,16 @@ def test_adding_bot_registers_group_and_setup_claims_ownership():
         assert await h.fetch("SELECT owner_id FROM `groups`") == [(alice_id,)]
         assert await h.fetch("SELECT user_id FROM group_members") == [(alice_id,)]
         button = h.session.last().reply_markup.inline_keyboard[0][0]
-        assert button.url == f"https://t.me/zikr_test_bot?start=setup_{group_id}"
+        assert button.url == f"https://t.me/zikr_test_bot/app?startapp=group_{group_id}"
 
-        # Owner follows the deep link -> gets the Mini App button in group-config mode.
-        await h.feed(_message(_private(ALICE), ALICE, f"/start setup_{group_id}"))
-        web_app = h.session.last().reply_markup.inline_keyboard[0][0].web_app
-        assert web_app.url == f"https://app.test/miniapp/?group={group_id}"
+        # First /setup seeds the starter goals, labelled in the owner's language.
+        goals = await h.fetch("SELECT goal_key, label, type, target FROM goals ORDER BY id")
+        assert len(goals) == 8
+        assert ("istighfar", "ኢስቲግፋር", "counter", 100) in goals
 
-        # Anyone else following it is refused.
-        await h.feed(_message(_private(BOB), BOB, f"/start setup_{group_id}"))
-        assert h.session.last().reply_markup is None
+        # Running /setup again doesn't duplicate them.
+        await h.feed(_message(GROUP, ALICE, "/setup"))
+        assert await h.fetch("SELECT COUNT(*) FROM goals") == [(8,)]
 
     run(scenario)
 
@@ -254,6 +255,9 @@ def test_join_is_idempotent():
         assert rows == [(102,)]
         first, second = h.session.texts()[-2:]
         assert first != second
+        assert h.session.last().reply_markup.inline_keyboard[0][0].url == (
+            "https://t.me/zikr_test_bot/app"
+        )
 
     run(scenario)
 

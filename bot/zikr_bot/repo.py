@@ -6,6 +6,9 @@ from dataclasses import dataclass
 
 import aiomysql
 
+from .goals import DEFAULT_GOALS
+from .i18n import t
+
 
 @dataclass(frozen=True)
 class User:
@@ -143,3 +146,21 @@ class Repo:
                 (group_id, user_id),
             )
             return cur.rowcount == 1
+
+    # --- goals -----------------------------------------------------------
+
+    async def seed_default_goals(self, group_id: int, lang: str) -> None:
+        """Give a group with no goals the starter set. Labels use the owner's language;
+        the Mini App shows its own translation for these well-known keys anyway."""
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute("SELECT 1 FROM goals WHERE group_id = %s LIMIT 1", (group_id,))
+            if await cur.fetchone() is not None:
+                return
+            await cur.executemany(
+                "INSERT IGNORE INTO goals (group_id, goal_key, label, type, target) "
+                "VALUES (%s, %s, %s, %s, %s)",
+                [
+                    (group_id, g.key, t(lang, f"goal_{g.key}"), g.type, g.target)
+                    for g in DEFAULT_GOALS
+                ],
+            )

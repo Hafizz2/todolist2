@@ -15,6 +15,7 @@ class Settings:
     db_user: str
     db_pass: str
     miniapp_url: str
+    miniapp_short_name: str
 
 
 def load_settings() -> Settings:
@@ -34,4 +35,5 @@ def load_settings() -> Settings:
         db_user=required("DB_USER"),
         db_pass=os.environ.get("DB_PASS", ""),
         miniapp_url=required("MINIAPP_URL"),
+        miniapp_short_name=required("MINIAPP_SHORT_NAME"),
     )

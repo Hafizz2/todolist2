@@ -10,8 +10,9 @@ from aiogram.enums import ChatMemberStatus, ChatType
 from aiogram.filters import JOIN_TRANSITION, LEAVE_TRANSITION, ChatMemberUpdatedFilter, Command
 from aiogram.types import ChatMemberUpdated, Message
 
+from ..config import Settings
 from ..i18n import DEFAULT_LANG, t
-from ..keyboards import open_settings_link_keyboard
+from ..keyboards import open_app_keyboard, open_settings_keyboard
 from ..repo import Repo, User
 
 log = logging.getLogger(__name__)
@@ -37,7 +38,9 @@ async def group_migrated(message: Message, repo: Repo) -> None:
     log.info("Chat %s migrated to %s", message.chat.id, message.migrate_to_chat_id)
 
 
-async def cmd_setup(message: Message, bot: Bot, repo: Repo, user: User | None) -> None:
+async def cmd_setup(
+    message: Message, bot: Bot, repo: Repo, settings: Settings, user: User | None
+) -> None:
     if user is None:
         await message.reply(t(DEFAULT_LANG, "anonymous_admin"))
         return
@@ -56,14 +59,19 @@ async def cmd_setup(message: Message, bot: Bot, repo: Repo, user: User | None) -
         return
 
     await repo.add_member(group.id, user.id)
+    await repo.seed_default_goals(group.id, user.lang)
     me = await bot.me()
     await message.reply(
         t(user.lang, "setup_done", name=escape(user.name)),
-        reply_markup=open_settings_link_keyboard(user.lang, me.username, group.id),
+        reply_markup=open_settings_keyboard(
+            user.lang, me.username, settings.miniapp_short_name, group.id
+        ),
     )
 
 
-async def cmd_join(message: Message, repo: Repo, user: User | None) -> None:
+async def cmd_join(
+    message: Message, bot: Bot, repo: Repo, settings: Settings, user: User | None
+) -> None:
     if user is None:
         await message.reply(t(DEFAULT_LANG, "anonymous_join"))
         return
@@ -71,7 +79,11 @@ async def cmd_join(message: Message, repo: Repo, user: User | None) -> None:
     group = await repo.upsert_group(message.chat.id, message.chat.title or "")
     added = await repo.add_member(group.id, user.id)
     key = "join_done" if added else "join_already"
-    await message.reply(t(user.lang, key, name=escape(user.name)))
+    me = await bot.me()
+    await message.reply(
+        t(user.lang, key, name=escape(user.name)),
+        reply_markup=open_app_keyboard(user.lang, me.username, settings.miniapp_short_name),
+    )
 
 
 def build_router() -> Router:

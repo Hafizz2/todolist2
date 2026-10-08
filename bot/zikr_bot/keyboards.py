@@ -1,42 +1,44 @@
 from __future__ import annotations
 
-from urllib.parse import urlencode, urlsplit, urlunsplit
-
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from .i18n import t
 
 LANG_LABELS = {"am": "🇪🇹 አማርኛ", "en": "🇬🇧 English"}
 
-SETUP_PAYLOAD_PREFIX = "setup_"
+GROUP_START_PREFIX = "group_"
 
 
-def with_query(url: str, **params: object) -> str:
-    """Append query parameters to `url`, keeping any it already has."""
-    parts = urlsplit(url)
-    extra = urlencode(params)
-    query = f"{parts.query}&{extra}" if parts.query else extra
-    return urlunsplit(parts._replace(query=query))
+def miniapp_link(bot_username: str, short_name: str, start_param: str | None = None) -> str:
+    """Direct Mini App link (https://core.telegram.org/bots/webapps#direct-link-mini-apps).
+
+    Unlike web_app buttons these work in group chats, and Telegram still signs initData.
+    `start_param` reaches the Mini App as initData's `start_param`.
+    """
+    link = f"https://t.me/{bot_username}/{short_name}"
+    return f"{link}?startapp={start_param}" if start_param else link
 
 
-def setup_payload(group_id: int) -> str:
-    return f"{SETUP_PAYLOAD_PREFIX}{group_id}"
+def group_start_param(group_id: int) -> str:
+    """start_param that opens the Mini App in group-config mode for `group_id`."""
+    return f"{GROUP_START_PREFIX}{group_id}"
 
 
-def parse_setup_payload(payload: str | None) -> int | None:
-    """`setup_<group_id>` deep-link payload -> group id, or None if it isn't one."""
-    if not payload or not payload.startswith(SETUP_PAYLOAD_PREFIX):
-        return None
-    rest = payload[len(SETUP_PAYLOAD_PREFIX) :]
-    return int(rest) if rest.isdigit() else None
+def _link_button(text: str, url: str) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text=text, url=url)]])
 
 
-def start_keyboard(lang: str, bot_username: str) -> InlineKeyboardMarkup:
+def start_keyboard(lang: str, bot_username: str, short_name: str) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [
                 InlineKeyboardButton(text=label, callback_data=f"lang:{code}")
                 for code, label in LANG_LABELS.items()
+            ],
+            [
+                InlineKeyboardButton(
+                    text=t(lang, "btn_open_app"), url=miniapp_link(bot_username, short_name)
+                )
             ],
             [
                 InlineKeyboardButton(
@@ -48,32 +50,13 @@ def start_keyboard(lang: str, bot_username: str) -> InlineKeyboardMarkup:
     )
 
 
-def open_settings_link_keyboard(
-    lang: str, bot_username: str, group_id: int
+def open_app_keyboard(lang: str, bot_username: str, short_name: str) -> InlineKeyboardMarkup:
+    return _link_button(t(lang, "btn_open_app"), miniapp_link(bot_username, short_name))
+
+
+def open_settings_keyboard(
+    lang: str, bot_username: str, short_name: str, group_id: int
 ) -> InlineKeyboardMarkup:
-    """Group-chat button. Telegram doesn't allow web_app buttons in groups, so this deep-links
-    the owner into a private chat with the bot, which then offers the real Mini App button."""
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text=t(lang, "btn_open_settings"),
-                    url=f"https://t.me/{bot_username}?start={setup_payload(group_id)}",
-                )
-            ]
-        ]
-    )
-
-
-def settings_webapp_keyboard(lang: str, miniapp_url: str, group_id: int) -> InlineKeyboardMarkup:
-    """Private-chat button that opens the Mini App in group-config mode."""
-    return InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text=t(lang, "btn_open_settings"),
-                    web_app=WebAppInfo(url=with_query(miniapp_url, group=group_id)),
-                )
-            ]
-        ]
-    )
+    """Opens the Mini App in group-config mode. The Mini App enforces owner-only access."""
+    url = miniapp_link(bot_username, short_name, group_start_param(group_id))
+    return _link_button(t(lang, "btn_open_settings"), url)

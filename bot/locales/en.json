@@ -13,7 +13,13 @@
   "anonymous_join": "Please post as yourself (not anonymously) to /join.",
   "join_done": "✅ {name} joined the challenge. May Allah accept it!",
   "join_already": "{name}, you're already in this challenge.",
-  "settings_intro": "Settings for <b>{title}</b>. Tap the button below to open them.",
-  "settings_not_owner": "Only the owner of this group's challenge can open its settings.",
-  "group_not_found": "I couldn't find that group. Please run /setup in the group again."
+  "btn_open_app": "📿 Open Zikr Circle",
+  "goal_salat_fajr": "Fajr prayer",
+  "goal_salat_dhuhr": "Dhuhr prayer",
+  "goal_salat_asr": "Asr prayer",
+  "goal_salat_maghrib": "Maghrib prayer",
+  "goal_salat_isha": "Isha prayer",
+  "goal_istighfar": "Istighfar",
+  "goal_salawat": "Salawat on the Prophet ﷺ",
+  "goal_quran_pages": "Qur'an pages"
 }

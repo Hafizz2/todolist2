@@ -1,15 +1,13 @@
-from zikr_bot.keyboards import parse_setup_payload, setup_payload, with_query
+from zikr_bot.keyboards import group_start_param, miniapp_link
 
 
-def test_setup_payload_round_trip():
-    assert parse_setup_payload(setup_payload(42)) == 42
+def test_miniapp_link():
+    assert miniapp_link("zikr_bot", "app") == "https://t.me/zikr_bot/app"
+    assert (
+        miniapp_link("zikr_bot", "app", "group_7") == "https://t.me/zikr_bot/app?startapp=group_7"
+    )
 
 
-def test_parse_setup_payload_rejects_other_payloads():
-    for payload in (None, "", "setup_", "setup_-1", "setup_abc", "hello"):
-        assert parse_setup_payload(payload) is None
-
-
-def test_with_query_appends_params():
-    assert with_query("https://x.test/app/", group=5) == "https://x.test/app/?group=5"
-    assert with_query("https://x.test/app/?v=2", group=5) == "https://x.test/app/?v=2&group=5"
+def test_group_start_param_matches_miniapp_contract():
+    # miniapp/lib/auth.php parses this exact shape (see group_id_from_start_param()).
+    assert group_start_param(42) == "group_42"

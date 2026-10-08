@@ -13,7 +13,13 @@
   "anonymous_join": "እባክዎ /join ለማድረግ በራስዎ ስም ይጻፉ (ማንነትዎን ሳይደብቁ)።",
   "join_done": "✅ {name} ውድድሩን ተቀላቅለዋል። አላህ ይቀበለን!",
   "join_already": "{name}፣ ቀድሞውንም በዚህ ውድድር ውስጥ ነዎት።",
-  "settings_intro": "የ<b>{title}</b> ቅንብሮች። ለመክፈት ከታች ያለውን ቁልፍ ይጫኑ።",
-  "settings_not_owner": "የዚህን ግሩፕ ቅንብሮች መክፈት የሚችለው የውድድሩ ባለቤት ብቻ ነው።",
-  "group_not_found": "ግሩፑን ማግኘት አልቻልኩም። እባክዎ በግሩፑ ውስጥ /setup እንደገና ይጻፉ።"
+  "btn_open_app": "📿 ዚክር ሰርክልን ክፈት",
+  "goal_salat_fajr": "የፈጅር ሶላት",
+  "goal_salat_dhuhr": "የዙህር ሶላት",
+  "goal_salat_asr": "የዐስር ሶላት",
+  "goal_salat_maghrib": "የመግሪብ ሶላት",
+  "goal_salat_isha": "የዒሻ ሶላት",
+  "goal_istighfar": "ኢስቲግፋር",
+  "goal_salawat": "በነቢዩ ﷺ ላይ ሶለዋት",
+  "goal_quran_pages": "የቁርኣን ገጾች"
 }
