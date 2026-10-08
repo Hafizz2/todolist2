@@ -7,7 +7,7 @@ Muslims form daily worship challenges inside their Telegram groups. A Python bot
 - `miniapp/` — Plain PHP 8 + PDO, vanilla JS, one small CSS file. No framework, no build step. Must run on ordinary shared hosting (cPanel).
 - `db/` — MySQL 8. Plain numbered SQL migration files (`001_init.sql`, `002_...sql`). These are the single source of truth for the schema, shared by Python and PHP.
 - Local dev: docker-compose with MySQL + PHP-Apache. The bot runs locally with long polling.
-- Config: `.env` for the bot, `miniapp/config.php` (git-ignored) with a `config.example.php` template. Keys: BOT_TOKEN, DB_HOST, DB_NAME, DB_USER, DB_PASS, MINIAPP_URL
+- Config: `.env` for the bot, `miniapp/config.php` (git-ignored) with a `config.example.php` template. Keys: BOT_TOKEN, DB_HOST, DB_NAME, DB_USER, DB_PASS, MINIAPP_URL, MINIAPP_SHORT_NAME (bot only: the Mini App's BotFather short name)
 - i18n: Amharic (default) + English. Bot strings in `bot/locales/*.json`, Mini App strings in `miniapp/lang/*.php`.
 
 ## Responsibility split
@@ -23,9 +23,9 @@ Muslims form daily worship challenges inside their Telegram groups. A Python bot
 
 ## Schema (MySQL, utf8mb4)
 users(id, telegram_id UNIQUE, name, lang, created_at)
-`groups`(id, chat_id UNIQUE, title, owner_id, timezone, morning_time, night_time, privacy_mode ENUM('completion','group_total_only','full_counts') DEFAULT 'completion', created_at)
+`groups`(id, chat_id UNIQUE, title, owner_id NULL until /setup, timezone, morning_time, night_time, privacy_mode ENUM('completion','group_total_only','full_counts') DEFAULT 'completion', active BOOL (0 once the bot is removed), created_at)
 group_members(group_id, user_id, joined_at, hide_my_stats BOOL DEFAULT 0) — PK(group_id, user_id)
-goals(id, group_id, goal_key, label, type ENUM('counter','checkbox','quantity'), target INT, active BOOL)
+goals(id, group_id, goal_key, label, type ENUM('counter','checkbox','quantity'), target INT, active BOOL) — UNIQUE(group_id, goal_key)
 entries(id, user_id, goal_key, entry_date DATE, amount INT, updated_at) — UNIQUE(user_id, goal_key, entry_date)
 
 Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the table `tg_groups`).
@@ -38,7 +38,8 @@ Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the
 
 ## Bot behavior
 - `/start` (private): welcome, language choice, "Add me to your group" button.
-- Added to group → owner runs `/setup` → button opens the Mini App in group-config mode (`?group=<id>`).
+- Added to group → owner runs `/setup` → button opens the Mini App in group-config mode. The first `/setup` seeds starter goals (5 prayers, istighfar, salawat, Qur'an pages).
+- Opening the Mini App: Telegram forbids web_app buttons in groups, so the bot always uses direct links `https://t.me/<bot>/<MINIAPP_SHORT_NAME>?startapp=<param>`. Group-config mode is `startapp=group_<groups.id>`, read from the validated initData `start_param`. The private-chat menu button opens MINIAPP_URL.
 - `/join` in group: registers the member.
 - `/today` in group: the member's progress, with a button to open the Mini App.
 - Morning job: posts today's challenge + Mini App button.
@@ -64,4 +65,6 @@ Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the
 - Python: type hints, ruff formatting, pytest for leaderboard/streak logic.
 - PHP: `declare(strict_types=1);`, small include files, no global state beyond config.
 - Dates are calculated in the group's timezone (Python `zoneinfo`, PHP `DateTimeZone`). Store `entry_date` as DATE.
+- A user's "today" for entries (which aren't per group) uses the timezone of the first active group they joined, else `Africa/Addis_Ababa`.
+- Known goal keys are translated by key (`goal_<key>` in both bot locales and Mini App lang files); `goals.label` is the fallback.
 - Write small, focused commits per feature.
