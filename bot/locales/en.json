@@ -1,0 +1,19 @@
+{
+  "welcome": "Assalamu alaikum, {name}! 🌙\n\nI'm Zikr Circle. I help your Telegram group keep a daily worship challenge together — zikr, prayers, Qur'an — with gentle reminders and a nightly summary.\n\nAdd me to your group, then a group admin runs /setup.",
+  "choose_language": "Choose your language:",
+  "btn_add_to_group": "➕ Add me to your group",
+  "language_set": "Language set to English.",
+  "bot_added": "Assalamu alaikum! 🤝 Thank you for adding Zikr Circle.\n\nA group admin should run /setup to become the challenge owner and choose the goals. Everyone else can run /join.",
+  "group_only": "Please use this command inside a group.",
+  "setup_not_admin": "Only a group admin can run /setup.",
+  "setup_owned_by_other": "This group's challenge was already set up by {owner}. Only the owner can change its settings.",
+  "setup_done": "✅ {name} is now the owner of this group's challenge.\n\nTap the button to choose goals and times. Members can join with /join.",
+  "btn_open_settings": "⚙️ Open settings",
+  "anonymous_admin": "I can't tell who you are while you post anonymously. Turn off \"Remain anonymous\" in your admin rights and try again.",
+  "anonymous_join": "Please post as yourself (not anonymously) to /join.",
+  "join_done": "✅ {name} joined the challenge. May Allah accept it!",
+  "join_already": "{name}, you're already in this challenge.",
+  "settings_intro": "Settings for <b>{title}</b>. Tap the button below to open them.",
+  "settings_not_owner": "Only the owner of this group's challenge can open its settings.",
+  "group_not_found": "I couldn't find that group. Please run /setup in the group again."
+}
