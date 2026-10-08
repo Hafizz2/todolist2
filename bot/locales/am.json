@@ -33,5 +33,11 @@
   "night_footer": "አላህ ከሁላችንም ይቀበል 🤲",
   "today_header": "{name}፣ ዛሬ: {progress}",
   "today_not_member": "እስካሁን ውድድሩን አልተቀላቀሉም። መጀመሪያ /join ይጻፉ።",
-  "today_no_goals": "ይህ ግሩፕ እስካሁን ግብ የለውም። ባለቤቱ በ/setup ማከል ይችላል።"
+  "today_no_goals": "ይህ ግሩፕ እስካሁን ግብ የለውም። ባለቤቱ በ/setup ማከል ይችላል።",
+  "goal_salat_duha": "የዱሓ ሶላት",
+  "goal_salat_tahajjud": "ተሀጁድ",
+  "goal_morning_adhkar": "የጠዋት አዝካር",
+  "goal_evening_adhkar": "የምሽት አዝካር",
+  "goal_tasbih": "ተስቢሕ (ሱብሓነላህ)",
+  "goal_sadaqah": "ሶደቃ"
 }

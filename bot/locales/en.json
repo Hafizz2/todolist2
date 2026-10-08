@@ -33,5 +33,11 @@
   "night_footer": "May Allah accept from all of us 🤲",
   "today_header": "{name}, today: {progress}",
   "today_not_member": "You haven't joined this challenge yet. Send /join first.",
-  "today_no_goals": "This group has no goals yet. The owner can add them with /setup."
+  "today_no_goals": "This group has no goals yet. The owner can add them with /setup.",
+  "goal_salat_duha": "Duha prayer",
+  "goal_salat_tahajjud": "Tahajjud",
+  "goal_morning_adhkar": "Morning adhkar",
+  "goal_evening_adhkar": "Evening adhkar",
+  "goal_tasbih": "Tasbih (SubhanAllah)",
+  "goal_sadaqah": "Sadaqah"
 }

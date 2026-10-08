@@ -27,3 +27,17 @@ function authenticate(): array
     }
     return ['user' => upsert_user(db(), $init['user']), 'init' => $init];
 }
+
+/** The active group with this id if the signed-in user owns it; responds 404/403 otherwise. */
+function require_owned_group(array $auth, mixed $groupId): array
+{
+    require_once __DIR__ . '/groups.php';
+    $group = is_int($groupId) ? find_group(db(), $groupId) : null;
+    if ($group === null) {
+        json_error('group_not_found', 404);
+    }
+    if ((int) $group['owner_id'] !== (int) $auth['user']['id']) {
+        json_error('not_owner', 403);
+    }
+    return $group;
+}
