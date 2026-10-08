@@ -34,6 +34,3 @@ ruff format --check . && ruff check .
 pytest                                                          # unit tests
 TEST_DB_HOST=127.0.0.1 TEST_DB_USER=root TEST_DB_PASS=root pytest  # + end-to-end flows against MySQL
 ```
-
-The legacy HTML/CSS/JS to-do list files at the repo root (`index.html`, `script.js`, `style.css`,
-`images/`) are from the original project and are not part of Zikr Circle.
