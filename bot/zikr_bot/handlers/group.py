@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+from datetime import UTC, datetime
 from html import escape
 
 from aiogram import Bot, F, Router
@@ -14,6 +15,8 @@ from ..config import Settings
 from ..i18n import DEFAULT_LANG, t
 from ..keyboards import open_app_keyboard, open_settings_keyboard
 from ..repo import Repo, User
+from ..schedule import local_date
+from ..summary import MemberInfo, member_progress, today_text
 
 log = logging.getLogger(__name__)
 
@@ -86,6 +89,33 @@ async def cmd_join(
     )
 
 
+async def cmd_today(
+    message: Message, bot: Bot, repo: Repo, settings: Settings, user: User | None
+) -> None:
+    if user is None:
+        await message.reply(t(DEFAULT_LANG, "anonymous_join"))
+        return
+
+    group = await repo.upsert_group(message.chat.id, message.chat.title or "")
+    if not await repo.is_member(group.id, user.id):
+        await message.reply(t(user.lang, "today_not_member"))
+        return
+    goals = await repo.group_goals(group.id)
+    if not goals:
+        await message.reply(t(user.lang, "today_no_goals"))
+        return
+
+    day = local_date(group.timezone, datetime.now(UTC))
+    entries = await repo.entries([user.id], [g.key for g in goals], day)
+    member = MemberInfo(user_id=user.id, name=user.name, hide_stats=False)
+    progress = member_progress(goals, member, entries)
+    me = await bot.me()
+    await message.reply(
+        today_text(user.lang, user.name, goals, progress),
+        reply_markup=open_app_keyboard(user.lang, me.username, settings.miniapp_short_name),
+    )
+
+
 def build_router() -> Router:
     router = Router(name="group")
     router.message.filter(F.chat.type.in_(GROUP_TYPES))
@@ -95,4 +125,5 @@ def build_router() -> Router:
     router.message.register(group_migrated, F.migrate_to_chat_id)
     router.message.register(cmd_setup, Command("setup"))
     router.message.register(cmd_join, Command("join"))
+    router.message.register(cmd_today, Command("today"))
     return router

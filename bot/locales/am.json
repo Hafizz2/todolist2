@@ -21,5 +21,17 @@
   "goal_salat_isha": "የዒሻ ሶላት",
   "goal_istighfar": "ኢስቲግፋር",
   "goal_salawat": "በነቢዩ ﷺ ላይ ሶለዋት",
-  "goal_quran_pages": "የቁርኣን ገጾች"
+  "goal_quran_pages": "የቁርኣን ገጾች",
+  "a_member": "አንድ አባል",
+  "morning_header": "☀️ አሰላሙ ዐለይኩም፣ <b>{title}</b>!\nየዛሬው ውድድር:",
+  "morning_footer": "ሂደትዎን በመተግበሪያው ይመዝግቡ 👇",
+  "night_header": "🌙 <b>{title}</b> — የዛሬ ማጠቃለያ",
+  "night_participation": "ዛሬ ከ{total} አባላት መካከል {active} ተሳትፈዋል።",
+  "night_nobody": "ዛሬ ምንም አልተመዘገበም። ነገ አዲስ ጅምር ነው፣ ኢንሻአላህ 🤲",
+  "night_goal_total": "{label}: {done} አጠናቀዋል",
+  "night_together": "በጋራ {amount}",
+  "night_footer": "አላህ ከሁላችንም ይቀበል 🤲",
+  "today_header": "{name}፣ ዛሬ: {progress}",
+  "today_not_member": "እስካሁን ውድድሩን አልተቀላቀሉም። መጀመሪያ /join ይጻፉ።",
+  "today_no_goals": "ይህ ግሩፕ እስካሁን ግብ የለውም። ባለቤቱ በ/setup ማከል ይችላል።"
 }

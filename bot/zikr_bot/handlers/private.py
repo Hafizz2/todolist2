@@ -61,5 +61,5 @@ def build_router() -> Router:
     router.message.filter(F.chat.type == ChatType.PRIVATE)
     router.message.register(cmd_start, CommandStart())
     router.callback_query.register(cb_set_lang, F.data.startswith("lang:"))
-    router.message.register(cmd_group_only, Command("setup", "join"))
+    router.message.register(cmd_group_only, Command("setup", "join", "today"))
     return router

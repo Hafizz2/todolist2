@@ -27,3 +27,7 @@ def t(lang: str | None, key: str, **kwargs: object) -> str:
     """Translate `key` into `lang`, falling back to the default language, then the key."""
     template = _STRINGS[normalize_lang(lang)].get(key) or _STRINGS[DEFAULT_LANG].get(key) or key
     return template.format(**kwargs) if kwargs else template
+
+
+def has_key(lang: str | None, key: str) -> bool:
+    return key in _STRINGS[normalize_lang(lang)]

@@ -11,7 +11,7 @@ from __future__ import annotations
 import asyncio
 import itertools
 import os
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +19,7 @@ import aiomysql
 import pytest
 from aiogram import Bot, Dispatcher
 from aiogram.client.session.base import BaseSession
+from aiogram.exceptions import TelegramForbiddenError
 from aiogram.methods import (
     AnswerCallbackQuery,
     EditMessageText,
@@ -41,6 +42,7 @@ from aiogram.types import User as TgUser
 
 from zikr_bot.config import Settings
 from zikr_bot.handlers import build_router
+from zikr_bot.jobs import tick
 from zikr_bot.middlewares import UserMiddleware
 from zikr_bot.repo import Repo
 
@@ -90,6 +92,7 @@ class FakeSession(BaseSession):
         super().__init__()
         self.admins = admins
         self.calls: list[TelegramMethod[Any]] = []
+        self.forbidden_chats: set[int] = set()
 
     async def make_request(self, bot: Bot, method: TelegramMethod[Any], timeout: int | None = None):
         self.calls.append(method)
@@ -101,6 +104,8 @@ class FakeSession(BaseSession):
                 return ChatMemberOwner(user=user, is_anonymous=False)
             return ChatMemberMember(user=user)
         if isinstance(method, SendMessage):
+            if method.chat_id in self.forbidden_chats:
+                raise TelegramForbiddenError(method, "Forbidden: bot was kicked from the group")
             return Message(
                 message_id=next(_ids),
                 date=datetime.now(),
@@ -141,8 +146,11 @@ class Harness:
         self.pool = pool
         self.session = FakeSession(admins)
         self.bot = Bot("42:TEST", session=self.session)
-        settings = Settings("42:TEST", "", 0, DB_NAME, "", "", "https://app.test/miniapp/", "app")
-        self.dp = Dispatcher(repo=Repo(pool), settings=settings)
+        self.settings = Settings(
+            "42:TEST", "", 0, DB_NAME, "", "", "https://app.test/miniapp/", "app"
+        )
+        self.repo = Repo(pool)
+        self.dp = Dispatcher(repo=self.repo, settings=self.settings)
         self.dp.message.middleware(UserMiddleware())
         self.dp.callback_query.middleware(UserMiddleware())
         self.dp.include_router(build_router())
@@ -159,6 +167,13 @@ class Harness:
             new_chat_member=ChatMemberMember(user=BOT_USER),
         )
         await self.feed(Update(update_id=next(_ids), my_chat_member=event))
+
+    async def tick(self, now: datetime) -> None:
+        await tick(self.bot, self.repo, self.settings, now)
+
+    async def execute(self, sql: str, *args: Any) -> None:
+        async with self.pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(sql, args)
 
     async def fetch(self, sql: str, *args: Any) -> list[tuple]:
         async with self.pool.acquire() as conn, conn.cursor() as cur:
@@ -291,5 +306,79 @@ def test_removal_and_migration_keep_group_data():
         )
         await h.feed(Update(update_id=next(_ids), my_chat_member=event))
         assert await h.fetch("SELECT active FROM `groups`") == [(0,)]
+
+    run(scenario)
+
+
+# 06:00 / 21:00 in Africa/Addis_Ababa (UTC+3) on 2026-10-09.
+MORNING_UTC = datetime(2026, 10, 9, 3, 0, tzinfo=UTC)
+NIGHT_UTC = datetime(2026, 10, 9, 18, 0, tzinfo=UTC)
+
+
+async def _set_up_group_with_members(h: Harness) -> None:
+    await h.feed(_message(GROUP, ALICE, "/setup"))  # Alice owns it; starter goals seeded
+    await h.feed(_message(GROUP, BOB, "/join"))
+    await h.execute("UPDATE users SET lang = 'en'")  # posts use the owner's language
+
+
+def test_morning_and_night_posts_are_sent_once():
+    async def scenario(h: Harness) -> None:
+        await _set_up_group_with_members(h)
+        (bob_id,) = (await h.fetch("SELECT id FROM users WHERE telegram_id = 102"))[0]
+        for key in ("salat_fajr", "salat_dhuhr"):
+            await h.execute(
+                "INSERT INTO entries (user_id, goal_key, entry_date, amount) "
+                "VALUES (%s, %s, '2026-10-09', 1)",
+                bob_id,
+                key,
+            )
+
+        sent_before = len(h.session.texts())
+        await h.tick(MORNING_UTC)
+        await h.tick(MORNING_UTC.replace(minute=1))  # next minute: already sent
+        posts = h.session.texts()[sent_before:]
+        assert len(posts) == 1
+        assert "Today's challenge" in posts[0] and "Istighfar × 100" in posts[0]
+        assert h.session.last().chat_id == GROUP.id
+        assert h.session.last().reply_markup.inline_keyboard[0][0].url == (
+            "https://t.me/zikr_test_bot/app"
+        )
+
+        await h.tick(NIGHT_UTC.replace(minute=7))  # a late tick still posts within the grace
+        night = h.session.texts()[-1]
+        assert "today's summary" in night
+        assert "Bob — 2/8" in night
+        assert "Alice" not in night  # logged nothing
+        assert await h.fetch("SELECT kind FROM group_posts ORDER BY kind") == [
+            ("morning",),
+            ("night",),
+        ]
+
+    run(scenario)
+
+
+def test_tick_skips_unclaimed_groups_and_deactivates_kicked_ones():
+    async def scenario(h: Harness) -> None:
+        await h.bot_added(by=BOB)  # registered, but nobody ran /setup -> no posts
+        sent_before = len(h.session.texts())
+        await h.tick(MORNING_UTC)
+        assert len(h.session.texts()) == sent_before
+
+        await h.feed(_message(GROUP, ALICE, "/setup"))
+        h.session.forbidden_chats.add(GROUP.id)
+        await h.tick(MORNING_UTC)
+        assert await h.fetch("SELECT active FROM `groups`") == [(0,)]
+
+    run(scenario)
+
+
+def test_today_shows_own_progress():
+    async def scenario(h: Harness) -> None:
+        await _set_up_group_with_members(h)
+        await h.feed(_message(GROUP, BOB, "/today"))
+        assert "Bob, today: 0/8" in h.session.last().text
+
+        await h.feed(_message(GROUP, TgUser(id=103, is_bot=False, first_name="Cara"), "/today"))
+        assert "/join" in h.session.last().text
 
     run(scenario)

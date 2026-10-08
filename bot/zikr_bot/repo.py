@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import date, datetime, time, timedelta
 
 import aiomysql
 
 from .goals import DEFAULT_GOALS
 from .i18n import t
+from .summary import Entries, GoalInfo, MemberInfo
 
 
 @dataclass(frozen=True)
@@ -26,6 +28,25 @@ class Group:
     owner_id: int | None
     timezone: str
     active: bool
+
+
+@dataclass(frozen=True)
+class ScheduledGroup:
+    id: int
+    chat_id: int
+    title: str
+    timezone: str
+    morning_time: time
+    night_time: time
+    privacy_mode: str
+    lang: str  # the owner's language, used for the group's posts
+
+
+def _time(value: timedelta | time) -> time:
+    """aiomysql returns TIME columns as timedelta."""
+    if isinstance(value, time):
+        return value
+    return (datetime.min + value).time()
 
 
 _USER_COLS = "id, telegram_id, name, lang"
@@ -164,3 +185,90 @@ class Repo:
                     for g in DEFAULT_GOALS
                 ],
             )
+
+    async def group_goals(self, group_id: int) -> list[GoalInfo]:
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                "SELECT goal_key, label, type, target FROM goals "
+                "WHERE group_id = %s AND active = 1 ORDER BY id",
+                (group_id,),
+            )
+            return [
+                GoalInfo(key=r[0], label=r[1], type=r[2], target=r[3]) for r in await cur.fetchall()
+            ]
+
+    # --- scheduled posts -------------------------------------------------
+
+    async def schedulable_groups(self) -> list[ScheduledGroup]:
+        """Active groups that finished /setup, with their owner's language."""
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                "SELECT g.id, g.chat_id, g.title, g.timezone, g.morning_time, g.night_time, "
+                "g.privacy_mode, u.lang FROM `groups` g JOIN users u ON u.id = g.owner_id "
+                "WHERE g.active = 1"
+            )
+            return [
+                ScheduledGroup(
+                    id=r[0],
+                    chat_id=r[1],
+                    title=r[2],
+                    timezone=r[3],
+                    morning_time=_time(r[4]),
+                    night_time=_time(r[5]),
+                    privacy_mode=r[6],
+                    lang=r[7],
+                )
+                for r in await cur.fetchall()
+            ]
+
+    async def claim_post(self, group_id: int, kind: str, post_date: date) -> bool:
+        """Records the post as sent; False if it already was (so it's never sent twice)."""
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                "INSERT IGNORE INTO group_posts (group_id, kind, post_date) VALUES (%s, %s, %s)",
+                (group_id, kind, post_date),
+            )
+            return cur.rowcount == 1
+
+    async def release_post(self, group_id: int, kind: str, post_date: date) -> None:
+        """Undo a claim after a failed send, so the next tick retries."""
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                "DELETE FROM group_posts WHERE group_id = %s AND kind = %s AND post_date = %s",
+                (group_id, kind, post_date),
+            )
+
+    # --- progress --------------------------------------------------------
+
+    async def group_members(self, group_id: int) -> list[MemberInfo]:
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                "SELECT u.id, u.name, m.hide_my_stats FROM group_members m "
+                "JOIN users u ON u.id = m.user_id WHERE m.group_id = %s ORDER BY m.joined_at",
+                (group_id,),
+            )
+            return [
+                MemberInfo(user_id=r[0], name=r[1], hide_stats=bool(r[2]))
+                for r in await cur.fetchall()
+            ]
+
+    async def is_member(self, group_id: int, user_id: int) -> bool:
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                "SELECT 1 FROM group_members WHERE group_id = %s AND user_id = %s",
+                (group_id, user_id),
+            )
+            return await cur.fetchone() is not None
+
+    async def entries(self, user_ids: list[int], goal_keys: list[str], entry_date: date) -> Entries:
+        if not user_ids or not goal_keys:
+            return {}
+        users = ", ".join(["%s"] * len(user_ids))
+        keys = ", ".join(["%s"] * len(goal_keys))
+        async with self._pool.acquire() as conn, conn.cursor() as cur:
+            await cur.execute(
+                f"SELECT user_id, goal_key, amount FROM entries "
+                f"WHERE entry_date = %s AND user_id IN ({users}) AND goal_key IN ({keys})",
+                (entry_date, *user_ids, *goal_keys),
+            )
+            return {(r[0], r[1]): r[2] for r in await cur.fetchall()}

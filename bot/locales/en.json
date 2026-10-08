@@ -21,5 +21,17 @@
   "goal_salat_isha": "Isha prayer",
   "goal_istighfar": "Istighfar",
   "goal_salawat": "Salawat on the Prophet ﷺ",
-  "goal_quran_pages": "Qur'an pages"
+  "goal_quran_pages": "Qur'an pages",
+  "a_member": "A member",
+  "morning_header": "☀️ Assalamu alaikum, <b>{title}</b>!\nToday's challenge:",
+  "morning_footer": "Log your progress in the app 👇",
+  "night_header": "🌙 <b>{title}</b> — today's summary",
+  "night_participation": "{active} of {total} members took part today.",
+  "night_nobody": "No progress logged today. Tomorrow is a new start, in shaa Allah 🤲",
+  "night_goal_total": "{label}: {done} completed",
+  "night_together": "{amount} together",
+  "night_footer": "May Allah accept from all of us 🤲",
+  "today_header": "{name}, today: {progress}",
+  "today_not_member": "You haven't joined this challenge yet. Send /join first.",
+  "today_no_goals": "This group has no goals yet. The owner can add them with /setup."
 }
