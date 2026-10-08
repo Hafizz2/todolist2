@@ -1,0 +1,67 @@
+# Zikr Circle — Telegram Group Worship Challenge Bot
+
+Muslims form daily worship challenges inside their Telegram groups. A Python bot posts reminders and nightly summaries. A simple PHP Mini App provides a zikr counter and a daily checklist. Both share one MySQL database.
+
+## Stack
+- `bot/` — Python 3.11+, aiogram 3, APScheduler (timezone-aware jobs), aiomysql or SQLAlchemy (async) + PyMySQL
+- `miniapp/` — Plain PHP 8 + PDO, vanilla JS, one small CSS file. No framework, no build step. Must run on ordinary shared hosting (cPanel).
+- `db/` — MySQL 8. Plain numbered SQL migration files (`001_init.sql`, `002_...sql`). These are the single source of truth for the schema, shared by Python and PHP.
+- Local dev: docker-compose with MySQL + PHP-Apache. The bot runs locally with long polling.
+- Config: `.env` for the bot, `miniapp/config.php` (git-ignored) with a `config.example.php` template. Keys: BOT_TOKEN, DB_HOST, DB_NAME, DB_USER, DB_PASS, MINIAPP_URL
+- i18n: Amharic (default) + English. Bot strings in `bot/locales/*.json`, Mini App strings in `miniapp/lang/*.php`.
+
+## Responsibility split
+- **Python bot**: commands, group registration, membership, scheduled morning/night posts, leaderboard calculation.
+- **PHP Mini App**: all user-facing screens and a small JSON API (`miniapp/api/*.php`) that reads and writes entries and goals.
+- They never call each other. They only share the database.
+
+## Core concepts
+- **User**: a Telegram user. Can own many groups and join many group challenges.
+- **Group**: a Telegram group chat the bot was added to. It has one owner (the user who ran /setup), a timezone (default `Africa/Addis_Ababa`), a morning time, a night time, and a privacy mode.
+- **Goal**: belongs to a group. Fields: type (`counter` | `checkbox` | `quantity`), key (e.g. `istighfar`, `salat_fajr`, `quran_pages`), label, daily target.
+- **Entry**: a user's progress for a goal key on a date. **Log once, applies everywhere.** Entries are stored per user + goal key + date, not per group. Every group with a goal of the same key reads the same entry. Each group's leaderboard is still computed separately.
+
+## Schema (MySQL, utf8mb4)
+users(id, telegram_id UNIQUE, name, lang, created_at)
+`groups`(id, chat_id UNIQUE, title, owner_id, timezone, morning_time, night_time, privacy_mode ENUM('completion','group_total_only','full_counts') DEFAULT 'completion', created_at)
+group_members(group_id, user_id, joined_at, hide_my_stats BOOL DEFAULT 0) — PK(group_id, user_id)
+goals(id, group_id, goal_key, label, type ENUM('counter','checkbox','quantity'), target INT, active BOOL)
+entries(id, user_id, goal_key, entry_date DATE, amount INT, updated_at) — UNIQUE(user_id, goal_key, entry_date)
+
+Note: `groups` is a reserved word in MySQL 8, so always backtick it (or name the table `tg_groups`).
+
+## Privacy / riya guidelines (important)
+- The default nightly post shows **completion** ("4/5 goals ✅") and **streaks**, never raw worship counts.
+- `privacy_mode`: `completion` (default) | `group_total_only` | `full_counts` (owner opt-in).
+- Members can set `hide_my_stats`, which shows them as "a member" in summaries.
+- Never rank people by raw istighfar/zikr counts by default.
+
+## Bot behavior
+- `/start` (private): welcome, language choice, "Add me to your group" button.
+- Added to group → owner runs `/setup` → button opens the Mini App in group-config mode (`?group=<id>`).
+- `/join` in group: registers the member.
+- `/today` in group: the member's progress, with a button to open the Mini App.
+- Morning job: posts today's challenge + Mini App button.
+- Night job: posts the summary according to privacy_mode.
+- Only the owner can edit goals or settings. Enforce this in PHP too.
+- Jobs: on startup and whenever group times change, (re)schedule per group. Simplest reliable approach: one job every minute that checks which groups are due in their own timezone.
+
+## PHP Mini App
+- Load `https://telegram.org/js/telegram-web-app.js` and send `Telegram.WebApp.initData` with every API request.
+- `miniapp/lib/auth.php` validates initData with HMAC-SHA256 (secret = HMAC("WebAppData", BOT_TOKEN)) and checks `auth_date` freshness. Reject everything that fails.
+- Use PDO prepared statements only. Escape all output with `htmlspecialchars`.
+- Pages: My Day (checklist across all goal keys from all my groups), Zikr Counter (big tap button, `HapticFeedback`, saves in batches every few taps and on close), My Groups (each group's progress), Group Settings (owner only: goals, times, privacy).
+- Follow Telegram theme colors via `--tg-theme-*` CSS variables. Mobile-first.
+
+## Build phases
+1. Repo structure, docker-compose, `001_init.sql`, bot /start, /setup, /join, group registration.
+2. PHP Mini App: initData auth, My Day checklist, zikr counter, entries API.
+3. Owner goal settings page, minute-tick scheduler, morning/night posts.
+4. Streaks, privacy modes, hide_my_stats, i18n polish.
+5. (Later) Prayer-time reminders, badges, Ramadan mode.
+
+## Conventions
+- Python: type hints, ruff formatting, pytest for leaderboard/streak logic.
+- PHP: `declare(strict_types=1);`, small include files, no global state beyond config.
+- Dates are calculated in the group's timezone (Python `zoneinfo`, PHP `DateTimeZone`). Store `entry_date` as DATE.
+- Write small, focused commits per feature.
