@@ -1,10 +1,12 @@
-// Zikr Circle Mini App: My Day checklist + zikr counter. Vanilla JS, no build step.
+// My Day checklist + zikr counter, and app startup. Uses window.ZC (core.js).
 (function () {
   'use strict';
 
-  var tg = window.Telegram && window.Telegram.WebApp;
-  var I18N = JSON.parse(document.getElementById('i18n').textContent);
-  var lang = 'am';
+  var ZC = window.ZC;
+  var tg = ZC.tg;
+  var t = ZC.t;
+  var $ = ZC.$;
+  var el = ZC.el;
 
   var COUNTER_BATCH = 10; // taps per save
   var COUNTER_IDLE_MS = 2000; // save after this long without taps
@@ -14,107 +16,34 @@
   var counterGoal = null;
   var pendingTaps = 0;
   var counterTimer = null;
-  var saveQueue = Promise.resolve(); // keeps writes in order
-
-  // --- helpers ---------------------------------------------------------
-
-  function t(key, vars) {
-    var s = (I18N[lang] && I18N[lang][key]) || I18N.am[key] || key;
-    Object.keys(vars || {}).forEach(function (k) {
-      s = s.split('{' + k + '}').join(String(vars[k]));
-    });
-    return s;
-  }
-
-  function $(id) {
-    return document.getElementById(id);
-  }
-
-  function el(tag, className, text) {
-    var node = document.createElement(tag);
-    if (className) node.className = className;
-    if (text !== undefined) node.textContent = text;
-    return node;
-  }
-
-  function goalLabel(goal) {
-    return (I18N[lang] && I18N[lang]['goal_' + goal.key]) || goal.label;
-  }
 
   function isDone(goal) {
     return goal.amount >= goal.target;
   }
 
-  function applyI18n() {
-    document.documentElement.lang = lang;
-    document.querySelectorAll('[data-i18n]').forEach(function (node) {
-      node.textContent = t(node.getAttribute('data-i18n'));
-    });
-  }
-
-  function show(viewId) {
-    document.querySelectorAll('.view').forEach(function (v) {
-      v.hidden = v.id !== viewId;
-    });
-  }
-
-  function showMessage(text) {
-    $('message').textContent = text;
-    show('view-message');
-  }
-
-  var toastTimer = null;
-  function toast(text) {
-    var node = $('toast');
-    node.textContent = text;
-    node.hidden = false;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
-      node.hidden = true;
-    }, 2500);
-  }
-
-  function haptic(kind) {
-    if (!tg || !tg.HapticFeedback) return;
-    if (kind === 'success') tg.HapticFeedback.notificationOccurred('success');
-    else if (kind === 'select') tg.HapticFeedback.selectionChanged();
-    else tg.HapticFeedback.impactOccurred('light');
-  }
-
-  // --- API -------------------------------------------------------------
-
-  function api(path, body, keepalive) {
-    var opts = {
-      method: body ? 'POST' : 'GET',
-      headers: { 'X-Telegram-Init-Data': tg.initData },
-      keepalive: !!keepalive,
-    };
-    if (body) {
-      opts.headers['Content-Type'] = 'application/json';
-      opts.body = JSON.stringify(body);
-    }
-    return fetch(path, opts).then(function (res) {
-      return res.json().then(function (data) {
-        if (!res.ok) throw new Error(data.error || 'http_' + res.status);
-        return data;
-      });
-    });
-  }
-
-  /** Queue a write so it runs after earlier ones; resolves with the server's amount. */
   function saveEntry(goal, change, keepalive) {
     var body = Object.assign({ goal_key: goal.key }, change);
-    var run = function () {
-      return api('api/entry.php', body, keepalive);
-    };
-    var result = saveQueue.then(run, run);
-    saveQueue = result.catch(function () {});
-    return result.then(function (data) {
+    return ZC.write('entry.php', body, keepalive).then(function (data) {
       return data.amount;
     });
   }
 
   // --- My Day ----------------------------------------------------------
+
+  function loadDay() {
+    return ZC.api('day.php').then(function (data) {
+      goals = data.goals;
+      return data;
+    });
+  }
+
+  function showDay(notice) {
+    $('notice').textContent = notice || '';
+    $('notice').hidden = !notice;
+    ZC.setBack(null);
+    renderDay();
+    ZC.show('view-day');
+  }
 
   function renderSummary() {
     var done = goals.filter(isDone).length;
@@ -137,10 +66,8 @@
 
   function renderGoal(goal) {
     var li = el('li', 'goal goal-' + goal.type + (isDone(goal) ? ' is-done' : ''));
-    var check = el('span', 'check', isDone(goal) ? '✓' : '');
-    var label = el('span', 'goal-label', goalLabel(goal));
-    li.appendChild(check);
-    li.appendChild(label);
+    li.appendChild(el('span', 'check', isDone(goal) ? '✓' : ''));
+    li.appendChild(el('span', 'goal-label', ZC.goalLabel(goal)));
 
     if (goal.type === 'checkbox') {
       li.setAttribute('role', 'checkbox');
@@ -153,7 +80,7 @@
       li.appendChild(el('span', 'goal-amount', goal.amount + ' / ' + goal.target));
       li.appendChild(el('span', 'chevron', '›'));
       li.setAttribute('role', 'button');
-      li.setAttribute('aria-label', goalLabel(goal) + ' — ' + t('open_counter'));
+      li.setAttribute('aria-label', ZC.goalLabel(goal) + ' — ' + t('open_counter'));
       li.tabIndex = 0;
       li.addEventListener('click', function () {
         openCounter(goal);
@@ -165,8 +92,7 @@
   }
 
   function refreshGoal(goal) {
-    var index = goals.indexOf(goal);
-    var old = $('goal-list').children[index];
+    var old = $('goal-list').children[goals.indexOf(goal)];
     if (old) old.replaceWith(renderGoal(goal));
     renderSummary();
   }
@@ -174,12 +100,12 @@
   function toggleCheckbox(goal) {
     var previous = goal.amount;
     goal.amount = isDone(goal) ? 0 : 1;
-    haptic(goal.amount ? 'success' : 'select');
+    ZC.haptic(goal.amount ? 'success' : 'select');
     refreshGoal(goal);
     saveEntry(goal, { amount: goal.amount }).catch(function () {
       goal.amount = previous;
       refreshGoal(goal);
-      toast(t('save_failed'));
+      ZC.toast(t('save_failed'));
     });
   }
 
@@ -199,7 +125,7 @@
       if (next === goal.amount) return;
       var wasDone = isDone(goal);
       goal.amount = next;
-      haptic(!wasDone && isDone(goal) ? 'success' : 'select');
+      ZC.haptic(!wasDone && isDone(goal) ? 'success' : 'select');
       value.textContent = goal.amount + ' / ' + goal.target;
       wrap.parentNode.classList.toggle('is-done', isDone(goal));
       wrap.parentNode.querySelector('.check').textContent = isDone(goal) ? '✓' : '';
@@ -213,7 +139,7 @@
           .catch(function () {
             goal.amount = saved;
             refreshGoal(goal);
-            toast(t('save_failed'));
+            ZC.toast(t('save_failed'));
           });
       }, QUANTITY_DEBOUNCE_MS);
     }
@@ -242,19 +168,17 @@
 
   function openCounter(goal) {
     counterGoal = goal;
-    $('counter-label').textContent = goalLabel(goal);
+    $('counter-label').textContent = ZC.goalLabel(goal);
     $('counter-target').textContent = t('target', { target: goal.target });
     renderCounter();
-    show('view-counter');
-    tg.BackButton.show();
+    ZC.show('view-counter');
+    ZC.setBack(closeCounter);
   }
 
   function closeCounter() {
     flushTaps(false);
     counterGoal = null;
-    tg.BackButton.hide();
-    renderDay();
-    show('view-day');
+    showDay();
   }
 
   function flushTaps(keepalive) {
@@ -265,7 +189,7 @@
     pendingTaps = 0;
     saveEntry(goal, { delta: delta }, keepalive).catch(function () {
       pendingTaps += delta; // retried with the next batch
-      toast(t('save_failed'));
+      ZC.toast(t('save_failed'));
     });
   }
 
@@ -273,7 +197,7 @@
     var wasDone = isDone(counterGoal);
     counterGoal.amount += 1;
     pendingTaps += 1;
-    haptic(!wasDone && isDone(counterGoal) ? 'success' : 'tap');
+    ZC.haptic(!wasDone && isDone(counterGoal) ? 'success' : 'tap');
     renderCounter();
     clearTimeout(counterTimer);
     if (pendingTaps >= COUNTER_BATCH) {
@@ -294,16 +218,27 @@
       goal.amount = 0;
       renderCounter();
       saveEntry(goal, { amount: 0 }).catch(function () {
-        toast(t('save_failed'));
+        ZC.toast(t('save_failed'));
       });
     });
   }
 
   // --- startup ---------------------------------------------------------
 
+  /** Leaving group settings: reload My Day, since goals may have changed. */
+  ZC.showDay = function () {
+    loadDay()
+      .then(function () {
+        showDay();
+      })
+      .catch(function () {
+        ZC.showMessage(t('load_failed'));
+      });
+  };
+
   function start() {
     if (!tg || !tg.initData) {
-      showMessage(t('open_in_telegram'));
+      ZC.showMessage(t('open_in_telegram'));
       return;
     }
     tg.ready();
@@ -311,7 +246,6 @@
 
     $('counter-tap').addEventListener('click', onTap);
     $('counter-reset').addEventListener('click', onReset);
-    tg.BackButton.onClick(closeCounter);
     // Save pending taps whenever the app is hidden or closed.
     document.addEventListener('visibilitychange', function () {
       if (document.visibilityState === 'hidden') flushTaps(true);
@@ -320,22 +254,21 @@
       flushTaps(true);
     });
 
-    api('api/day.php')
+    loadDay()
       .then(function (data) {
-        lang = I18N[data.user.lang] ? data.user.lang : 'am';
-        goals = data.goals;
-        applyI18n();
-        if (data.group_id) {
-          // Group settings (owner only) arrive in Phase 3.
-          $('notice').textContent = t('group_settings_soon');
-          $('notice').hidden = false;
+        ZC.setLang(data.user.lang);
+        if (!data.group_id) {
+          showDay();
+          return;
         }
-        renderDay();
-        show('view-day');
+        // Opened from a group's /setup link: owners get its settings, everyone else My Day.
+        ZC.openSettings(data.group_id).catch(function (err) {
+          showDay(err.message === 'not_owner' ? t('not_owner') : '');
+        });
       })
       .catch(function (err) {
-        applyI18n();
-        showMessage(t(err.message === 'unauthorized' ? 'open_in_telegram' : 'load_failed'));
+        ZC.setLang('am');
+        ZC.showMessage(t(err.message === 'unauthorized' ? 'open_in_telegram' : 'load_failed'));
       });
   }
 

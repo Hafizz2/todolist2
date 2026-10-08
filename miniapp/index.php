@@ -50,10 +50,46 @@ $asset = static fn (string $path): string => htmlspecialchars(
       <p id="counter-done" class="done-msg" data-i18n="counter_done" hidden></p>
       <button id="counter-reset" class="link" type="button" data-i18n="reset"></button>
     </section>
+
+    <section id="view-settings" class="view" hidden>
+      <header class="day-header">
+        <h1 id="settings-title"></h1>
+        <p class="hint" data-i18n="group_settings"></p>
+      </header>
+
+      <h2 class="section-title" data-i18n="goals"></h2>
+      <ul id="settings-goals" class="goals"></ul>
+
+      <h2 class="section-title" data-i18n="add_goal"></h2>
+      <div class="card">
+        <label class="row"><select id="add-preset"></select></label>
+        <div id="add-custom" hidden>
+          <label class="row"><input id="add-label" type="text" maxlength="100"></label>
+          <label class="row"><select id="add-type"></select></label>
+        </div>
+        <label id="add-target-row" class="row">
+          <span data-i18n="daily_target"></span>
+          <input id="add-target" class="target-input" type="number" min="1" max="100000" inputmode="numeric">
+        </label>
+        <div class="row"><button id="add-goal" class="button" type="button" data-i18n="add"></button></div>
+      </div>
+
+      <h2 class="section-title" data-i18n="schedule"></h2>
+      <div class="card">
+        <label class="row"><span data-i18n="morning_time"></span><input id="set-morning" type="time"></label>
+        <label class="row"><span data-i18n="night_time"></span><input id="set-night" type="time"></label>
+        <label class="row"><span data-i18n="timezone"></span><select id="set-timezone"></select></label>
+      </div>
+
+      <h2 class="section-title" data-i18n="privacy"></h2>
+      <div id="set-privacy" class="card"></div>
+    </section>
   </main>
   <div id="toast" class="toast" hidden></div>
 
   <script id="i18n" type="application/json"><?= $i18n ?></script>
+  <script src="<?= $asset('assets/core.js') ?>"></script>
+  <script src="<?= $asset('assets/settings.js') ?>"></script>
   <script src="<?= $asset('assets/app.js') ?>"></script>
 </body>
 </html>
